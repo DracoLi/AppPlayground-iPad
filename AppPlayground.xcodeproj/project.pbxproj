@@ -39,24 +39,24 @@
 		D4078EC71598EC9E000C0E4E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D4078EC91598EC9E000C0E4E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D4078ECB1598EC9E000C0E4E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D4078ECF1598EC9E000C0E4E /* AppPlayground-Info.plist */ = {isa = PBXFileReference; path = "AppPlayground-Info.plist"; sourceTree = "<group>"; };
+		D4078ECF1598EC9E000C0E4E /* AppPlayground-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppPlayground-Info.plist"; sourceTree = "<group>"; };
 		D4078ED11598EC9F000C0E4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4078ED31598EC9F000C0E4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D4078ED51598EC9F000C0E4E /* AppPlayground-Prefix.pch */ = {isa = PBXFileReference; path = "AppPlayground-Prefix.pch"; sourceTree = "<group>"; };
-		D4078ED61598EC9F000C0E4E /* APAppDelegate.h */ = {isa = PBXFileReference; path = APAppDelegate.h; sourceTree = "<group>"; };
+		D4078ED51598EC9F000C0E4E /* AppPlayground-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppPlayground-Prefix.pch"; sourceTree = "<group>"; };
+		D4078ED61598EC9F000C0E4E /* APAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APAppDelegate.h; sourceTree = "<group>"; };
 		D4078ED71598EC9F000C0E4E /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
-		D4078ED91598EC9F000C0E4E /* APRootViewController.h */ = {isa = PBXFileReference; path = APRootViewController.h; sourceTree = "<group>"; };
+		D4078ED91598EC9F000C0E4E /* APRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APRootViewController.h; sourceTree = "<group>"; };
 		D4078EDA1598EC9F000C0E4E /* APRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APRootViewController.m; sourceTree = "<group>"; };
-		D4078EDC1598EC9F000C0E4E /* APDataViewController.h */ = {isa = PBXFileReference; path = APDataViewController.h; sourceTree = "<group>"; };
+		D4078EDC1598EC9F000C0E4E /* APDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APDataViewController.h; sourceTree = "<group>"; };
 		D4078EDD1598EC9F000C0E4E /* APDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APDataViewController.m; sourceTree = "<group>"; };
-		D4078EDF1598EC9F000C0E4E /* APModelController.h */ = {isa = PBXFileReference; path = APModelController.h; sourceTree = "<group>"; };
+		D4078EDF1598EC9F000C0E4E /* APModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APModelController.h; sourceTree = "<group>"; };
 		D4078EE01598ECA0000C0E4E /* APModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APModelController.m; sourceTree = "<group>"; };
 		D4078EE31598ECA0000C0E4E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D4078EEA1598ECA2000C0E4E /* AppPlaygroundTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppPlaygroundTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4078EEB1598ECA2000C0E4E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D4078EF31598ECA2000C0E4E /* AppPlaygroundTests-Info.plist */ = {isa = PBXFileReference; path = "AppPlaygroundTests-Info.plist"; sourceTree = "<group>"; };
+		D4078EF31598ECA2000C0E4E /* AppPlaygroundTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppPlaygroundTests-Info.plist"; sourceTree = "<group>"; };
 		D4078EF51598ECA2000C0E4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4078EF71598ECA2000C0E4E /* AppPlaygroundTests.h */ = {isa = PBXFileReference; path = AppPlaygroundTests.h; sourceTree = "<group>"; };
+		D4078EF71598ECA2000C0E4E /* AppPlaygroundTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppPlaygroundTests.h; sourceTree = "<group>"; };
 		D4078EF81598ECA2000C0E4E /* AppPlaygroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppPlaygroundTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +93,9 @@
 				D4078EC41598EC9D000C0E4E /* Products */,
 			);
 			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+			wrapsLines = 1;
 		};
 		D4078EC41598EC9D000C0E4E /* Products */ = {
 			isa = PBXGroup;
@@ -208,6 +211,7 @@
 			attributes = {
 				CLASSPREFIX = AP;
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = AppPlayground;
 			};
 			buildConfigurationList = D4078EBD1598EC9C000C0E4E /* Build configuration list for PBXProject "AppPlayground" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -342,7 +346,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -361,7 +365,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -375,6 +379,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppPlayground/AppPlayground-Prefix.pch";
 				INFOPLIST_FILE = "AppPlayground/AppPlayground-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -386,6 +391,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppPlayground/AppPlayground-Prefix.pch";
 				INFOPLIST_FILE = "AppPlayground/AppPlayground-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
