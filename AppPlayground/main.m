@@ -3,7 +3,7 @@
 //  AppPlayground
 //
 //  Created by Ang Li on 12-06-25.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 AppPlayground. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -13,6 +13,7 @@
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([APAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, 
+                                 NSStringFromClass([APAppDelegate class]));
     }
 }

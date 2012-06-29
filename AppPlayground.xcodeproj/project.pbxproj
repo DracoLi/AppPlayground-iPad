@@ -13,15 +13,13 @@
 		D4078ED21598EC9F000C0E4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4078ED01598EC9F000C0E4E /* InfoPlist.strings */; };
 		D4078ED41598EC9F000C0E4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078ED31598EC9F000C0E4E /* main.m */; };
 		D4078ED81598EC9F000C0E4E /* APAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078ED71598EC9F000C0E4E /* APAppDelegate.m */; };
-		D4078EDB1598EC9F000C0E4E /* APRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078EDA1598EC9F000C0E4E /* APRootViewController.m */; };
-		D4078EDE1598EC9F000C0E4E /* APDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078EDD1598EC9F000C0E4E /* APDataViewController.m */; };
-		D4078EE11598ECA0000C0E4E /* APModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078EE01598ECA0000C0E4E /* APModelController.m */; };
 		D4078EE41598ECA0000C0E4E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */; };
 		D4078EEC1598ECA2000C0E4E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EEB1598ECA2000C0E4E /* SenTestingKit.framework */; };
 		D4078EED1598ECA2000C0E4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EC71598EC9E000C0E4E /* UIKit.framework */; };
 		D4078EEE1598ECA2000C0E4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EC91598EC9E000C0E4E /* Foundation.framework */; };
-		D4078EF61598ECA2000C0E4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4078EF41598ECA2000C0E4E /* InfoPlist.strings */; };
-		D4078EF91598ECA2000C0E4E /* AppPlaygroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078EF81598ECA2000C0E4E /* AppPlaygroundTests.m */; };
+		D44629ED159E309500714339 /* APDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629E4159E309500714339 /* APDataViewController.m */; };
+		D44629EE159E309500714339 /* APRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629E6159E309500714339 /* APRootViewController.m */; };
+		D44629EF159E309500714339 /* APModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629EA159E309500714339 /* APModelController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,19 +43,15 @@
 		D4078ED51598EC9F000C0E4E /* AppPlayground-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppPlayground-Prefix.pch"; sourceTree = "<group>"; };
 		D4078ED61598EC9F000C0E4E /* APAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APAppDelegate.h; sourceTree = "<group>"; };
 		D4078ED71598EC9F000C0E4E /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
-		D4078ED91598EC9F000C0E4E /* APRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APRootViewController.h; sourceTree = "<group>"; };
-		D4078EDA1598EC9F000C0E4E /* APRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APRootViewController.m; sourceTree = "<group>"; };
-		D4078EDC1598EC9F000C0E4E /* APDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APDataViewController.h; sourceTree = "<group>"; };
-		D4078EDD1598EC9F000C0E4E /* APDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APDataViewController.m; sourceTree = "<group>"; };
-		D4078EDF1598EC9F000C0E4E /* APModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APModelController.h; sourceTree = "<group>"; };
-		D4078EE01598ECA0000C0E4E /* APModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APModelController.m; sourceTree = "<group>"; };
 		D4078EE31598ECA0000C0E4E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D4078EEA1598ECA2000C0E4E /* AppPlaygroundTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppPlaygroundTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4078EEB1598ECA2000C0E4E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D4078EF31598ECA2000C0E4E /* AppPlaygroundTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppPlaygroundTests-Info.plist"; sourceTree = "<group>"; };
-		D4078EF51598ECA2000C0E4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D4078EF71598ECA2000C0E4E /* AppPlaygroundTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppPlaygroundTests.h; sourceTree = "<group>"; };
-		D4078EF81598ECA2000C0E4E /* AppPlaygroundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppPlaygroundTests.m; sourceTree = "<group>"; };
+		D44629E3159E309500714339 /* APDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDataViewController.h; sourceTree = "<group>"; };
+		D44629E4159E309500714339 /* APDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDataViewController.m; sourceTree = "<group>"; };
+		D44629E5159E309500714339 /* APRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRootViewController.h; sourceTree = "<group>"; };
+		D44629E6159E309500714339 /* APRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRootViewController.m; sourceTree = "<group>"; };
+		D44629E9159E309500714339 /* APModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APModelController.h; sourceTree = "<group>"; };
+		D44629EA159E309500714339 /* APModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APModelController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				D4078ECD1598EC9E000C0E4E /* AppPlayground */,
-				D4078EF11598ECA2000C0E4E /* AppPlaygroundTests */,
 				D4078EC61598EC9D000C0E4E /* Frameworks */,
 				D4078EC41598EC9D000C0E4E /* Products */,
 			);
@@ -120,15 +113,14 @@
 		D4078ECD1598EC9E000C0E4E /* AppPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				D44629DE159E309500714339 /* Assets */,
+				D44629E1159E309500714339 /* Categories */,
+				D44629E2159E309500714339 /* Controllers */,
+				D44629E8159E309500714339 /* Models */,
+				D44629EB159E309500714339 /* Utils */,
+				D44629EC159E309500714339 /* Views */,
 				D4078ED61598EC9F000C0E4E /* APAppDelegate.h */,
 				D4078ED71598EC9F000C0E4E /* APAppDelegate.m */,
-				D4078ED91598EC9F000C0E4E /* APRootViewController.h */,
-				D4078EDA1598EC9F000C0E4E /* APRootViewController.m */,
-				D4078EDC1598EC9F000C0E4E /* APDataViewController.h */,
-				D4078EDD1598EC9F000C0E4E /* APDataViewController.m */,
-				D4078EDF1598EC9F000C0E4E /* APModelController.h */,
-				D4078EE01598ECA0000C0E4E /* APModelController.m */,
-				D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */,
 				D4078ECE1598EC9E000C0E4E /* Supporting Files */,
 			);
 			path = AppPlayground;
@@ -145,23 +137,77 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D4078EF11598ECA2000C0E4E /* AppPlaygroundTests */ = {
+		D44629DE159E309500714339 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				D4078EF71598ECA2000C0E4E /* AppPlaygroundTests.h */,
-				D4078EF81598ECA2000C0E4E /* AppPlaygroundTests.m */,
-				D4078EF21598ECA2000C0E4E /* Supporting Files */,
+				D44629DF159E309500714339 /* Images */,
 			);
-			path = AppPlaygroundTests;
+			path = Assets;
 			sourceTree = "<group>";
 		};
-		D4078EF21598ECA2000C0E4E /* Supporting Files */ = {
+		D44629DF159E309500714339 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D4078EF31598ECA2000C0E4E /* AppPlaygroundTests-Info.plist */,
-				D4078EF41598ECA2000C0E4E /* InfoPlist.strings */,
+				D44629E0159E309500714339 /* General */,
 			);
-			name = "Supporting Files";
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D44629E0159E309500714339 /* General */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		D44629E1159E309500714339 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		D44629E2159E309500714339 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D44629E3159E309500714339 /* APDataViewController.h */,
+				D44629E4159E309500714339 /* APDataViewController.m */,
+				D44629E5159E309500714339 /* APRootViewController.h */,
+				D44629E6159E309500714339 /* APRootViewController.m */,
+				D44629E7159E309500714339 /* General */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D44629E7159E309500714339 /* General */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		D44629E8159E309500714339 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D44629E9159E309500714339 /* APModelController.h */,
+				D44629EA159E309500714339 /* APModelController.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D44629EB159E309500714339 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D44629EC159E309500714339 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +291,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4078EF61598ECA2000C0E4E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,9 +319,9 @@
 			files = (
 				D4078ED41598EC9F000C0E4E /* main.m in Sources */,
 				D4078ED81598EC9F000C0E4E /* APAppDelegate.m in Sources */,
-				D4078EDB1598EC9F000C0E4E /* APRootViewController.m in Sources */,
-				D4078EDE1598EC9F000C0E4E /* APDataViewController.m in Sources */,
-				D4078EE11598ECA0000C0E4E /* APModelController.m in Sources */,
+				D44629ED159E309500714339 /* APDataViewController.m in Sources */,
+				D44629EE159E309500714339 /* APRootViewController.m in Sources */,
+				D44629EF159E309500714339 /* APModelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +329,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4078EF91598ECA2000C0E4E /* AppPlaygroundTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,14 +357,7 @@
 				D4078EE31598ECA0000C0E4E /* en */,
 			);
 			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		D4078EF41598ECA2000C0E4E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D4078EF51598ECA2000C0E4E /* en */,
-			);
-			name = InfoPlist.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -450,6 +487,7 @@
 				D4078EFE1598ECA2000C0E4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D4078EFF1598ECA2000C0E4E /* Build configuration list for PBXNativeTarget "AppPlaygroundTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +496,7 @@
 				D4078F011598ECA2000C0E4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
