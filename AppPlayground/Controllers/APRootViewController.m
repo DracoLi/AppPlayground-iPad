@@ -7,6 +7,7 @@
 //
 
 #import "APRootViewController.h"
+#import <Parse/Parse.h>
 
 @interface APRootViewController ()
 @end
@@ -16,7 +17,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
 }
 
 - (void)viewDidUnload
