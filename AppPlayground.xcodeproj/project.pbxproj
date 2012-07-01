@@ -14,7 +14,6 @@
 		D4078ED41598EC9F000C0E4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078ED31598EC9F000C0E4E /* main.m */; };
 		D4078ED81598EC9F000C0E4E /* APAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4078ED71598EC9F000C0E4E /* APAppDelegate.m */; };
 		D4078EE41598ECA0000C0E4E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */; };
-		D4078EEC1598ECA2000C0E4E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EEB1598ECA2000C0E4E /* SenTestingKit.framework */; };
 		D4078EED1598ECA2000C0E4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EC71598EC9E000C0E4E /* UIKit.framework */; };
 		D4078EEE1598ECA2000C0E4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EC91598EC9E000C0E4E /* Foundation.framework */; };
 		D44629ED159E309500714339 /* APDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629E4159E309500714339 /* APDataViewController.m */; };
@@ -45,7 +44,6 @@
 		D4078ED71598EC9F000C0E4E /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
 		D4078EE31598ECA0000C0E4E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D4078EEA1598ECA2000C0E4E /* AppPlaygroundTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppPlaygroundTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4078EEB1598ECA2000C0E4E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D44629E3159E309500714339 /* APDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDataViewController.h; sourceTree = "<group>"; };
 		D44629E4159E309500714339 /* APDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDataViewController.m; sourceTree = "<group>"; };
 		D44629E5159E309500714339 /* APRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRootViewController.h; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4078EEC1598ECA2000C0E4E /* SenTestingKit.framework in Frameworks */,
 				D4078EED1598ECA2000C0E4E /* UIKit.framework in Frameworks */,
 				D4078EEE1598ECA2000C0E4E /* Foundation.framework in Frameworks */,
 			);
@@ -105,7 +102,6 @@
 				D4078EC71598EC9E000C0E4E /* UIKit.framework */,
 				D4078EC91598EC9E000C0E4E /* Foundation.framework */,
 				D4078ECB1598EC9E000C0E4E /* CoreGraphics.framework */,
-				D4078EEB1598ECA2000C0E4E /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
