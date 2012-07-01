@@ -7,6 +7,7 @@
 //
 
 #import "APAppDelegate.h"
+#import "Flurry.h"
 
 @implementation APAppDelegate
 
@@ -17,6 +18,13 @@
   // Set up Parse
   [Parse setApplicationId:@"zGpyB8K1a5lPFg3iY01c0eD3gK6ZYOYCvrliOd8k"
                 clientKey:@"dnHn6NxLSiL589Wfs6iDnveuHIW5kIttKz81Fvpl"];
+  
+  // Set up Flurry
+  [Flurry setDebugLogEnabled:(DEBUG && NO)];
+  [Flurry startSession:@"Z2VVTNDDKGJDCMYZH368"];
+  
+  NSLog(@"shittoo");
+  
   return YES;
 }
 
