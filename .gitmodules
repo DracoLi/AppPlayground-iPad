@@ -1,0 +1,6 @@
+[submodule "Frameworks/RestKit"]
+	path = Frameworks/RestKit
+	url = git://github.com/RestKit/RestKit.git
+[submodule "Frameworks/SDWebImage"]
+	path = Frameworks/SDWebImage
+	url = https://github.com/rs/SDWebImage

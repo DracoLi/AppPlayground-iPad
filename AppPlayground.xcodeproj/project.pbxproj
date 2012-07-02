@@ -23,11 +23,17 @@
 		D440EF9015A0F88100004C38 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EF8F15A0F88100004C38 /* Security.framework */; };
 		D440EF9215A0F88800004C38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EF9115A0F88800004C38 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D440EF9415A0FBFE00004C38 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EF9315A0FBFE00004C38 /* MobileCoreServices.framework */; };
-		D440EFA215A100C900004C38 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFA015A100C900004C38 /* libFlurry.a */; };
 		D440EFA315A100C900004C38 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFA115A100C900004C38 /* Parse.framework */; };
+		D440EFBE15A106A400004C38 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFBD15A106A400004C38 /* CoreData.framework */; };
+		D440EFC015A106B200004C38 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFBF15A106B200004C38 /* libxml2.dylib */; };
+		D440EFC115A1123500004C38 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFB015A1057600004C38 /* libRestKit.a */; };
 		D44629ED159E309500714339 /* APDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629E4159E309500714339 /* APDataViewController.m */; };
 		D44629EE159E309500714339 /* APRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629E6159E309500714339 /* APRootViewController.m */; };
 		D44629EF159E309500714339 /* APModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629EA159E309500714339 /* APModelController.m */; };
+		D46859D315A2114C0073AC87 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */; };
+		D46859D515A2115C0073AC87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D415A2115B0073AC87 /* ImageIO.framework */; };
+		D46859D615A212A60073AC87 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFEE15A119C400004C38 /* libFlurry.a */; };
+		D46859D815A213020073AC87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D715A213020073AC87 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,76 @@
 			proxyType = 1;
 			remoteGlobalIDString = D4078EC21598EC9D000C0E4E;
 			remoteInfo = AppPlayground;
+		};
+		D440EFAF15A1057600004C38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D440EFA415A1057500004C38 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D1614564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		D440EFB115A1057600004C38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D440EFA415A1057500004C38 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160D2614564E820060A5C5;
+			remoteInfo = RestKitTests;
+		};
+		D440EFB315A1057600004C38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D440EFA415A1057500004C38 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E62145651060060A5C5;
+			remoteInfo = RestKitFramework;
+		};
+		D440EFB515A1057600004C38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D440EFA415A1057500004C38 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 25160E78145651060060A5C5;
+			remoteInfo = RestKitFrameworkTests;
+		};
+		D440EFB715A1057600004C38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D440EFA415A1057500004C38 /* RestKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 259C301615128079003066A2;
+			remoteInfo = RestKitResources;
+		};
+		D440EFB915A1064E00004C38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D440EFA415A1057500004C38 /* RestKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 25160D1514564E810060A5C5;
+			remoteInfo = RestKit;
+		};
+		D46859CB15A2110D0073AC87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53922D6F148C55820056699D;
+			remoteInfo = SDWebImage;
+		};
+		D46859CD15A2110D0073AC87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53761325155AD0D5005750A4;
+			remoteInfo = "SDWebImage ARC";
+		};
+		D46859CF15A2110D0073AC87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 531041E0157EAFA400BBABC3;
+			remoteInfo = "SDWebImage ARC+MKAnnotation";
+		};
+		D46859D115A2113A0073AC87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 53761307155AD0D5005750A4;
+			remoteInfo = "SDWebImage ARC";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -60,15 +136,21 @@
 		D440EF8F15A0F88100004C38 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D440EF9115A0F88800004C38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D440EF9315A0FBFE00004C38 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		D440EF9F15A100C900004C38 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		D440EFA015A100C900004C38 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		D440EFA115A100C900004C38 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
+		D440EFA415A1057500004C38 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = Frameworks/RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
+		D440EFBD15A106A400004C38 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D440EFBF15A106B200004C38 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D440EFED15A119C400004C38 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = AppPlayground/Flurry.h; sourceTree = "<group>"; };
+		D440EFEE15A119C400004C38 /* libFlurry.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; name = libFlurry.a; path = AppPlayground/libFlurry.a; sourceTree = "<group>"; };
 		D44629E3159E309500714339 /* APDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDataViewController.h; sourceTree = "<group>"; };
 		D44629E4159E309500714339 /* APDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDataViewController.m; sourceTree = "<group>"; };
 		D44629E5159E309500714339 /* APRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRootViewController.h; sourceTree = "<group>"; };
 		D44629E6159E309500714339 /* APRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRootViewController.m; sourceTree = "<group>"; };
 		D44629E9159E309500714339 /* APModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APModelController.h; sourceTree = "<group>"; };
 		D44629EA159E309500714339 /* APModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APModelController.m; sourceTree = "<group>"; };
+		D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = Frameworks/SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
+		D46859D415A2115B0073AC87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D46859D715A213020073AC87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +158,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46859D815A213020073AC87 /* CoreLocation.framework in Frameworks */,
+				D46859D515A2115C0073AC87 /* ImageIO.framework in Frameworks */,
+				D46859D315A2114C0073AC87 /* libSDWebImageARC.a in Frameworks */,
+				D440EFC115A1123500004C38 /* libRestKit.a in Frameworks */,
+				D440EFC015A106B200004C38 /* libxml2.dylib in Frameworks */,
+				D440EFBE15A106A400004C38 /* CoreData.framework in Frameworks */,
 				D440EF9415A0FBFE00004C38 /* MobileCoreServices.framework in Frameworks */,
 				D440EF9215A0F88800004C38 /* QuartzCore.framework in Frameworks */,
 				D440EF9015A0F88100004C38 /* Security.framework in Frameworks */,
@@ -86,8 +174,8 @@
 				D4078EC81598EC9E000C0E4E /* UIKit.framework in Frameworks */,
 				D4078ECA1598EC9E000C0E4E /* Foundation.framework in Frameworks */,
 				D4078ECC1598EC9E000C0E4E /* CoreGraphics.framework in Frameworks */,
-				D440EFA215A100C900004C38 /* libFlurry.a in Frameworks */,
 				D440EFA315A100C900004C38 /* Parse.framework in Frameworks */,
+				D46859D615A212A60073AC87 /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				D4078ECD1598EC9E000C0E4E /* AppPlayground */,
+				D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */,
+				D440EFA415A1057500004C38 /* RestKit.xcodeproj */,
 				D4078EC61598EC9D000C0E4E /* Frameworks */,
 				D4078EC41598EC9D000C0E4E /* Products */,
 			);
@@ -127,7 +217,11 @@
 		D4078EC61598EC9D000C0E4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D440EF9E15A100C900004C38 /* Flurry */,
+				D46859D915A217170073AC87 /* Flurry */,
+				D46859D715A213020073AC87 /* CoreLocation.framework */,
+				D46859D415A2115B0073AC87 /* ImageIO.framework */,
+				D440EFBF15A106B200004C38 /* libxml2.dylib */,
+				D440EFBD15A106A400004C38 /* CoreData.framework */,
 				D440EFA115A100C900004C38 /* Parse.framework */,
 				D440EF9315A0FBFE00004C38 /* MobileCoreServices.framework */,
 				D440EF9115A0F88800004C38 /* QuartzCore.framework */,
@@ -150,7 +244,7 @@
 				D44629E1159E309500714339 /* Categories */,
 				D44629E2159E309500714339 /* Controllers */,
 				D44629E8159E309500714339 /* Models */,
-				D44629EB159E309500714339 /* Utils */,
+				D440EFD815A1177300004C38 /* Utils */,
 				D44629EC159E309500714339 /* Views */,
 				D4078ED61598EC9F000C0E4E /* APAppDelegate.h */,
 				D4078ED71598EC9F000C0E4E /* APAppDelegate.m */,
@@ -170,14 +264,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D440EF9E15A100C900004C38 /* Flurry */ = {
+		D440EFA515A1057500004C38 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D440EF9F15A100C900004C38 /* Flurry.h */,
-				D440EFA015A100C900004C38 /* libFlurry.a */,
+				D440EFB015A1057600004C38 /* libRestKit.a */,
+				D440EFB215A1057600004C38 /* RestKitTests.octest */,
+				D440EFB415A1057600004C38 /* RestKit.framework */,
+				D440EFB615A1057600004C38 /* RestKitFrameworkTests.octest */,
+				D440EFB815A1057600004C38 /* RestKitResources.bundle */,
 			);
-			name = Flurry;
-			path = Frameworks/Flurry;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D440EFD815A1177300004C38 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D44629DE159E309500714339 /* Assets */ = {
@@ -238,19 +341,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D44629EB159E309500714339 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		D44629EC159E309500714339 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D46859C315A2110D0073AC87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D46859CC15A2110D0073AC87 /* libSDWebImage.a */,
+				D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */,
+				D46859D015A2110D0073AC87 /* libSDWebImageARC+MKAnnotation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D46859D915A217170073AC87 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				D440EFED15A119C400004C38 /* Flurry.h */,
+				D440EFEE15A119C400004C38 /* libFlurry.a */,
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +382,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				D46859D215A2113A0073AC87 /* PBXTargetDependency */,
+				D440EFBA15A1064E00004C38 /* PBXTargetDependency */,
 			);
 			name = AppPlayground;
 			productName = AppPlayground;
@@ -312,6 +429,16 @@
 			mainGroup = D4078EB81598EC9C000C0E4E;
 			productRefGroup = D4078EC41598EC9D000C0E4E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D440EFA515A1057500004C38 /* Products */;
+					ProjectRef = D440EFA415A1057500004C38 /* RestKit.xcodeproj */;
+				},
+				{
+					ProductGroup = D46859C315A2110D0073AC87 /* Products */;
+					ProjectRef = D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D4078EC21598EC9D000C0E4E /* AppPlayground */,
@@ -319,6 +446,65 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D440EFB015A1057600004C38 /* libRestKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRestKit.a;
+			remoteRef = D440EFAF15A1057600004C38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D440EFB215A1057600004C38 /* RestKitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitTests.octest;
+			remoteRef = D440EFB115A1057600004C38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D440EFB415A1057600004C38 /* RestKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = RestKit.framework;
+			remoteRef = D440EFB315A1057600004C38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D440EFB615A1057600004C38 /* RestKitFrameworkTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitFrameworkTests.octest;
+			remoteRef = D440EFB515A1057600004C38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D440EFB815A1057600004C38 /* RestKitResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestKitResources.bundle;
+			remoteRef = D440EFB715A1057600004C38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D46859CC15A2110D0073AC87 /* libSDWebImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImage.a;
+			remoteRef = D46859CB15A2110D0073AC87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImageARC.a;
+			remoteRef = D46859CD15A2110D0073AC87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D46859D015A2110D0073AC87 /* libSDWebImageARC+MKAnnotation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImageARC+MKAnnotation.a";
+			remoteRef = D46859CF15A2110D0073AC87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D4078EC11598EC9D000C0E4E /* Resources */ = {
@@ -382,6 +568,16 @@
 			isa = PBXTargetDependency;
 			target = D4078EC21598EC9D000C0E4E /* AppPlayground */;
 			targetProxy = D4078EEF1598ECA2000C0E4E /* PBXContainerItemProxy */;
+		};
+		D440EFBA15A1064E00004C38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RestKit;
+			targetProxy = D440EFB915A1064E00004C38 /* PBXContainerItemProxy */;
+		};
+		D46859D215A2113A0073AC87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SDWebImage ARC";
+			targetProxy = D46859D115A2113A0073AC87 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -463,14 +659,23 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppPlayground/AppPlayground-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
+					"”$(OBJROOT)/UninstalledProducts/include”",
+				);
 				INFOPLIST_FILE = "AppPlayground/AppPlayground-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Flurry\"",
-					"\"$(SRCROOT)/Frameworks/Flurry\"",
+					"\"$(SRCROOT)/AppPlayground\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -485,14 +690,23 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AppPlayground/AppPlayground-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+					"”$(TARGET_BUILD_DIR)/usr/local/lib/include”",
+					"”$(OBJROOT)/UninstalledProducts/include”",
+				);
 				INFOPLIST_FILE = "AppPlayground/AppPlayground-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Flurry\"",
-					"\"$(SRCROOT)/Frameworks/Flurry\"",
+					"\"$(SRCROOT)/AppPlayground\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -511,6 +725,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks/Flurry\"",
+					"\"$(SRCROOT)/AppPlayground\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -532,6 +748,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Frameworks/Flurry\"",
+					"\"$(SRCROOT)/AppPlayground\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
