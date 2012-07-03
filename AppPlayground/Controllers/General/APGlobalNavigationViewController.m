@@ -46,6 +46,8 @@
   self.childSelectorPopover = [[UIPopoverController alloc] initWithContentViewController:content];
   self.childSelectorPopover.popoverContentSize = CGSizeMake(350, 300);
   self.childSelectorPopover.delegate = self;
+  
+  [APChild test];
 }
 
 - (void)viewDidUnload

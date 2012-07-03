@@ -7,7 +7,7 @@
 //
 
 #import "APChild.h"
-#import "APFileManager.h"
+#import "APPersistenceManager.h"
 
 @interface APChild ()
 - (BOOL)saveChild;
@@ -28,10 +28,6 @@
 #define ChildNameKey          @"ChildNameKey"
 #define ChildAgeKey           @"ChildAgeKey"
 #define ChildInterestsKey     @"ChildInterestsKey"
-
-- (BOOL)saveChild {
-  return YES;
-}
 
 - (id)initWithCoder:(NSCoder *)decoder {
   self = [super init];
@@ -71,31 +67,19 @@
 #pragma mark - Class methods
 
 + (NSArray *)getChildren {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  NSData *resultsData = [defaults objectForKey:ChildrenListKey];
-  NSArray *results = [NSArray array];
-  if (resultsData != nil) {
-    NSArray *savedArray = [NSKeyedUnarchiver unarchiveObjectWithData:resultsData];
-    if (savedArray != nil) 
-      results = savedArray;
-  }
-  return results;
+  return [APPersistenceManager getDataFromDefaults:ChildrenListKey];
 }
 
 + (void)addChild:(APChild *)child {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSMutableArray *children = [[APChild getChildren] mutableCopy];
   if (!children) children = [NSMutableArray array];
   child.childID = children.count;
   [children addObject:child];
-  [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:children] forKey:ChildrenListKey];
-  [defaults synchronize];
+  [APChild setChildren:children];
 }
 
 + (void)setChildren:(NSArray *)children {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:children] forKey:ChildrenListKey];
-  [defaults synchronize];
+  [APPersistenceManager saveObjectToDefaults:children key:ChildrenListKey];
 }
 
 + (void)updateChildren:(APChild *)child {
@@ -121,23 +105,15 @@
 }
 
 + (APChild *)getCurrentChild {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  NSData *resultsData = [defaults objectForKey:CurrentChildrenKey];
-  APChild *result = nil;
-  if (resultsData != nil) {
-    result = [NSKeyedUnarchiver unarchiveObjectWithData:resultsData];
-  }
-  return result;
+  return [APPersistenceManager getDataFromDefaults:CurrentChildrenKey];
 }
 
 + (void)setCurrentChild:(APChild *)child {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:child] 
-               forKey:CurrentChildrenKey];
-  [defaults synchronize];
+  [APPersistenceManager saveObjectToDefaults:child key:CurrentChildrenKey];
 }
 
 #pragma mark - Debug
+
 + (void)populateChildren {
   [APChild setChildren:[NSArray array]];
   APChild *one = [[APChild alloc] init];
@@ -155,8 +131,8 @@
 + (void)test {
   [APChild populateChildren];
   NSArray *children = [APChild getChildren];
-  [APChild setCurrentChild:[children objectAtIndex:1]];
-  APChild *tobesaved = [children objectAtIndex:1];
+  [APChild setCurrentChild:[children objectAtIndex:0]];
+  APChild *tobesaved = [children objectAtIndex:0];
   APChild *current = [APChild getCurrentChild];
   NSAssert([tobesaved isEqual:current], @"must be equal child");
   APChild *dra = [[APChild alloc] init];
@@ -169,6 +145,9 @@
   for (APChild *one in children) {
     NSLog(@"%@", one);
   }
+  
+  // Clear children
+  [APChild setChildren:[NSArray array]];
 }
 
 @end

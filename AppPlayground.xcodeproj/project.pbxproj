@@ -38,7 +38,7 @@
 		D4685A2515A2402E0073AC87 /* NavigationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4685A2415A2402E0073AC87 /* NavigationStoryboard.storyboard */; };
 		D4685A3415A262F60073AC87 /* APChild.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A3315A262F60073AC87 /* APChild.m */; };
 		D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */; };
-		D4685A6715A285C90073AC87 /* APFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A6615A285C90073AC87 /* APFileManager.m */; };
+		D4685A6715A285C90073AC87 /* APPersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A6615A285C90073AC87 /* APPersistenceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,8 +163,8 @@
 		D4685A3315A262F60073AC87 /* APChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APChild.m; sourceTree = "<group>"; };
 		D4685A4815A273BC0073AC87 /* APChildSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APChildSelectorViewController.h; sourceTree = "<group>"; };
 		D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APChildSelectorViewController.m; sourceTree = "<group>"; };
-		D4685A6515A285C90073AC87 /* APFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APFileManager.h; sourceTree = "<group>"; };
-		D4685A6615A285C90073AC87 /* APFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APFileManager.m; sourceTree = "<group>"; };
+		D4685A6515A285C90073AC87 /* APPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPersistenceManager.h; sourceTree = "<group>"; };
+		D4685A6615A285C90073AC87 /* APPersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPersistenceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,8 +293,8 @@
 		D440EFD815A1177300004C38 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D4685A6515A285C90073AC87 /* APFileManager.h */,
-				D4685A6615A285C90073AC87 /* APFileManager.m */,
+				D4685A6515A285C90073AC87 /* APPersistenceManager.h */,
+				D4685A6615A285C90073AC87 /* APPersistenceManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -587,7 +587,7 @@
 				D46859F415A21F680073AC87 /* APGlobalNavigationViewController.m in Sources */,
 				D4685A3415A262F60073AC87 /* APChild.m in Sources */,
 				D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */,
-				D4685A6715A285C90073AC87 /* APFileManager.m in Sources */,
+				D4685A6715A285C90073AC87 /* APPersistenceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
