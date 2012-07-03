@@ -32,8 +32,13 @@
 		D44629EF159E309500714339 /* APModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629EA159E309500714339 /* APModelController.m */; };
 		D46859D315A2114C0073AC87 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */; };
 		D46859D515A2115C0073AC87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D415A2115B0073AC87 /* ImageIO.framework */; };
-		D46859D615A212A60073AC87 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFEE15A119C400004C38 /* libFlurry.a */; };
 		D46859D815A213020073AC87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D715A213020073AC87 /* CoreLocation.framework */; };
+		D46859F415A21F680073AC87 /* APGlobalNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46859F215A21F680073AC87 /* APGlobalNavigationViewController.m */; };
+		D4685A2315A23D260073AC87 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4685A2215A23D260073AC87 /* libFlurry.a */; };
+		D4685A2515A2402E0073AC87 /* NavigationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4685A2415A2402E0073AC87 /* NavigationStoryboard.storyboard */; };
+		D4685A3415A262F60073AC87 /* APChild.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A3315A262F60073AC87 /* APChild.m */; };
+		D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */; };
+		D4685A6715A285C90073AC87 /* APFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A6615A285C90073AC87 /* APFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,8 +145,6 @@
 		D440EFA415A1057500004C38 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = Frameworks/RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		D440EFBD15A106A400004C38 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D440EFBF15A106B200004C38 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		D440EFED15A119C400004C38 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = AppPlayground/Flurry.h; sourceTree = "<group>"; };
-		D440EFEE15A119C400004C38 /* libFlurry.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; name = libFlurry.a; path = AppPlayground/libFlurry.a; sourceTree = "<group>"; };
 		D44629E3159E309500714339 /* APDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APDataViewController.h; sourceTree = "<group>"; };
 		D44629E4159E309500714339 /* APDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDataViewController.m; sourceTree = "<group>"; };
 		D44629E5159E309500714339 /* APRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRootViewController.h; sourceTree = "<group>"; };
@@ -151,6 +154,17 @@
 		D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = Frameworks/SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		D46859D415A2115B0073AC87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D46859D715A213020073AC87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D46859F115A21F680073AC87 /* APGlobalNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APGlobalNavigationViewController.h; sourceTree = "<group>"; };
+		D46859F215A21F680073AC87 /* APGlobalNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APGlobalNavigationViewController.m; sourceTree = "<group>"; };
+		D4685A2115A23D260073AC87 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		D4685A2215A23D260073AC87 /* libFlurry.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.objfile"; path = libFlurry.a; sourceTree = "<group>"; };
+		D4685A2415A2402E0073AC87 /* NavigationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NavigationStoryboard.storyboard; path = General/NavigationStoryboard.storyboard; sourceTree = "<group>"; };
+		D4685A3215A262F60073AC87 /* APChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APChild.h; sourceTree = "<group>"; };
+		D4685A3315A262F60073AC87 /* APChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APChild.m; sourceTree = "<group>"; };
+		D4685A4815A273BC0073AC87 /* APChildSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APChildSelectorViewController.h; sourceTree = "<group>"; };
+		D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APChildSelectorViewController.m; sourceTree = "<group>"; };
+		D4685A6515A285C90073AC87 /* APFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APFileManager.h; sourceTree = "<group>"; };
+		D4685A6615A285C90073AC87 /* APFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +189,7 @@
 				D4078ECA1598EC9E000C0E4E /* Foundation.framework in Frameworks */,
 				D4078ECC1598EC9E000C0E4E /* CoreGraphics.framework in Frameworks */,
 				D440EFA315A100C900004C38 /* Parse.framework in Frameworks */,
-				D46859D615A212A60073AC87 /* libFlurry.a in Frameworks */,
+				D4685A2315A23D260073AC87 /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +231,7 @@
 		D4078EC61598EC9D000C0E4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D46859D915A217170073AC87 /* Flurry */,
+				D4685A2015A23D260073AC87 /* Flurry */,
 				D46859D715A213020073AC87 /* CoreLocation.framework */,
 				D46859D415A2115B0073AC87 /* ImageIO.framework */,
 				D440EFBF15A106B200004C38 /* libxml2.dylib */,
@@ -279,6 +293,8 @@
 		D440EFD815A1177300004C38 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D4685A6515A285C90073AC87 /* APFileManager.h */,
+				D4685A6615A285C90073AC87 /* APFileManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -328,6 +344,10 @@
 		D44629E7159E309500714339 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D46859F115A21F680073AC87 /* APGlobalNavigationViewController.h */,
+				D46859F215A21F680073AC87 /* APGlobalNavigationViewController.m */,
+				D4685A4815A273BC0073AC87 /* APChildSelectorViewController.h */,
+				D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -337,6 +357,8 @@
 			children = (
 				D44629E9159E309500714339 /* APModelController.h */,
 				D44629EA159E309500714339 /* APModelController.m */,
+				D4685A3215A262F60073AC87 /* APChild.h */,
+				D4685A3315A262F60073AC87 /* APChild.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,6 +366,7 @@
 		D44629EC159E309500714339 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D46859F615A21F930073AC87 /* General */,
 				D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */,
 			);
 			path = Views;
@@ -359,13 +382,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D46859D915A217170073AC87 /* Flurry */ = {
+		D46859F615A21F930073AC87 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				D440EFED15A119C400004C38 /* Flurry.h */,
-				D440EFEE15A119C400004C38 /* libFlurry.a */,
+				D4685A2415A2402E0073AC87 /* NavigationStoryboard.storyboard */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		D4685A2015A23D260073AC87 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				D4685A2115A23D260073AC87 /* Flurry.h */,
+				D4685A2215A23D260073AC87 /* libFlurry.a */,
 			);
 			name = Flurry;
+			path = Frameworks/Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,6 +545,7 @@
 			files = (
 				D4078ED21598EC9F000C0E4E /* InfoPlist.strings in Resources */,
 				D4078EE41598ECA0000C0E4E /* MainStoryboard.storyboard in Resources */,
+				D4685A2515A2402E0073AC87 /* NavigationStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +584,10 @@
 				D44629ED159E309500714339 /* APDataViewController.m in Sources */,
 				D44629EE159E309500714339 /* APRootViewController.m in Sources */,
 				D44629EF159E309500714339 /* APModelController.m in Sources */,
+				D46859F415A21F680073AC87 /* APGlobalNavigationViewController.m in Sources */,
+				D4685A3415A262F60073AC87 /* APChild.m in Sources */,
+				D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */,
+				D4685A6715A285C90073AC87 /* APFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +706,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/AppPlayground\"",
+					"\"$(SRCROOT)/Frameworks/Flurry\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -700,6 +738,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/AppPlayground\"",
+					"\"$(SRCROOT)/Frameworks/Flurry\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
