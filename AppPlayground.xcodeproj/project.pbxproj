@@ -39,6 +39,7 @@
 		D4685A3415A262F60073AC87 /* APChild.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A3315A262F60073AC87 /* APChild.m */; };
 		D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */; };
 		D4685A6715A285C90073AC87 /* APPersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A6615A285C90073AC87 /* APPersistenceManager.m */; };
+		D4811B7515A3762500A82E56 /* APChildCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B7415A3762500A82E56 /* APChildCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,8 @@
 		D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APChildSelectorViewController.m; sourceTree = "<group>"; };
 		D4685A6515A285C90073AC87 /* APPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPersistenceManager.h; sourceTree = "<group>"; };
 		D4685A6615A285C90073AC87 /* APPersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPersistenceManager.m; sourceTree = "<group>"; };
+		D4811B7315A3762500A82E56 /* APChildCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APChildCell.h; path = General/APChildCell.h; sourceTree = "<group>"; };
+		D4811B7415A3762500A82E56 /* APChildCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APChildCell.m; path = General/APChildCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				D4685A2415A2402E0073AC87 /* NavigationStoryboard.storyboard */,
+				D4811B7315A3762500A82E56 /* APChildCell.h */,
+				D4811B7415A3762500A82E56 /* APChildCell.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				D4685A3415A262F60073AC87 /* APChild.m in Sources */,
 				D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */,
 				D4685A6715A285C90073AC87 /* APPersistenceManager.m in Sources */,
+				D4811B7515A3762500A82E56 /* APChildCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

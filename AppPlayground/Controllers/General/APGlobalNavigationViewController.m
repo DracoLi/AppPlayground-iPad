@@ -7,7 +7,6 @@
 //
 
 #import "APGlobalNavigationViewController.h"
-#import "APChildSelectorViewController.h"
 
 @interface APGlobalNavigationViewController ()
 
@@ -17,6 +16,7 @@
 @synthesize sidebarView = _sidebarView;
 @synthesize contentView = _contentView;
 @synthesize currentViewController = _currentViewController;
+@synthesize childButton = _childButton;
 @synthesize childSelectorPopover = _childSelectorPopover;
 @synthesize homeViewController = _homeViewController;
 @synthesize recommendedViewController = _recommendedViewController;
@@ -40,28 +40,36 @@
 {
   [super viewDidLoad];
   
+  [APChild test];
+  
   // Set up child selector popover
   APChildSelectorViewController *content = [self.storyboard 
                                             instantiateViewControllerWithIdentifier:@"ChildSelectorView"];
+  content.delegate = self;
   self.childSelectorPopover = [[UIPopoverController alloc] initWithContentViewController:content];
   self.childSelectorPopover.popoverContentSize = CGSizeMake(350, 300);
   self.childSelectorPopover.delegate = self;
   
-  [APChild test];
+  // Update current child
+  [self updateCurrentChild:[APChild getCurrentChild]];
 }
 
 - (void)viewDidUnload
 {
   [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
+  
+  [self setChildButton:nil];
+  [self setSidebarView:nil];
+  [self setContentView:nil];
 }
 
 #pragma Actions
 
 - (IBAction)changeChildClicked:(UIButton *)sender {
-  NSLog(@"Change chlid clicked");
-  [self.childSelectorPopover presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+  [self.childSelectorPopover presentPopoverFromRect:sender.frame 
+                                             inView:self.view 
+                           permittedArrowDirections:UIPopoverArrowDirectionAny 
+                                           animated:YES];
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {
@@ -84,7 +92,7 @@
   [self showWishList:YES animated:YES];
 }
 
-#pragma Showing Views
+#pragma mark - Showing Views
 
 - (void)showHomeView:(BOOL)shouldShow animated:(BOOL)animated {
   
@@ -102,14 +110,36 @@
   
 }
 
-#pragma Popover delegate
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+#pragma mark - Sidebar utils
+
+- (void)updateCurrentChild:(APChild *)child {
+  
+  // Update button title
+  [self.childButton setTitle:child.name forState:UIControlStateNormal];
+  
+  // Update global child
+  [APChild setCurrentChild:child];
 }
+
+#pragma mark - Popover delegate
+
+- (void)childDidSelectForViewController:(APChildSelectorViewController *)view 
+                                  child:(APChild *)child
+                           shouldUpdate:(BOOL)shouldUpdate {
+  [self.childSelectorPopover dismissPopoverAnimated:YES];
+  
+  // Update current view to reflect new child
+  if (shouldUpdate) {
+    [self updateCurrentChild:child];
+  }
+}
+
+#pragma mark - Others
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-    interfaceOrientation == UIInterfaceOrientationLandscapeRight;
+  interfaceOrientation == UIInterfaceOrientationLandscapeRight;
 }
 
 @end

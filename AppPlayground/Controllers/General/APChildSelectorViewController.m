@@ -7,6 +7,7 @@
 //
 
 #import "APChildSelectorViewController.h"
+#import "APChildCell.h"
 
 @interface APChildSelectorViewController ()
 
@@ -15,6 +16,7 @@
 @implementation APChildSelectorViewController
 @synthesize children = _children;
 @synthesize selectedChild = _selectedChild;
+@synthesize delegate = _delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,24 +30,35 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
   self.clearsSelectionOnViewWillAppear = NO;
   
   // Get data and current child
   self.children = [APChild getChildren];
-  self.selectedChild = [APChild getCurrentChild];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  
+  // Initialize selected child and select the row if first initialization
+  if (self.selectedChild == nil) {
+    self.selectedChild = [APChild getCurrentChild];
+    NSUInteger targetRow = [self.children indexOfObject:self.selectedChild];
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:targetRow inSection:0]
+                                animated:NO
+                          scrollPosition:UITableViewScrollPositionNone];
+  }
 }
 
 - (void)viewDidUnload
 {
   [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
 }
+
 
 #pragma mark - Table view data source
 
@@ -63,62 +76,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChildIdentifier"];
+  APChildCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChildIdentifier"];
   APChild *thisChild = [self.children objectAtIndex:indexPath.row];
   cell.textLabel.text = thisChild.name;
   return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  // Navigation logic may go here. Create and push another view controller.
-  /*
-   <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-   // ...
-   // Pass the selected object to the new view controller.
-   [self.navigationController pushViewController:detailViewController animated:YES];
-   */
+  APChild *newChild = [self.children objectAtIndex:indexPath.row];
+  
+  // Notify delegate row is clicked and whether this is a different child
+  if (self.delegate && [self.delegate 
+                        respondsToSelector:@selector(childDidSelectForViewController:child:shouldUpdate:)]) {
+    [self.delegate childDidSelectForViewController:self 
+                                             child:newChild
+                                      shouldUpdate:![newChild isEqual:self.selectedChild]];
+  }
+  self.selectedChild = newChild;
 }
 
 @end

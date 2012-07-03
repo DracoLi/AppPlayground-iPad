@@ -10,7 +10,6 @@
 #import "APPersistenceManager.h"
 
 @interface APChild ()
-- (BOOL)saveChild;
 @end
 
 @implementation APChild
@@ -145,9 +144,6 @@
   for (APChild *one in children) {
     NSLog(@"%@", one);
   }
-  
-  // Clear children
-  [APChild setChildren:[NSArray array]];
 }
 
 @end

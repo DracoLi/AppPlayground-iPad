@@ -133,6 +133,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="childButton" destination="h6A-Ra-dC9" id="j4Y-1n-gbc"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-637" y="98"/>
@@ -148,7 +151,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChildIdentifier" textLabel="dLu-gA-dHa" style="IBUITableViewCellStyleDefault" id="yev-j4-ffP">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChildIdentifier" textLabel="dLu-gA-dHa" style="IBUITableViewCellStyleDefault" id="yev-j4-ffP" customClass="APChildCell">
                                 <rect key="frame" x="0.0" y="22" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -178,6 +181,27 @@
             <point key="canvasLocation" x="620" y="35"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="APChildCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/APChildCell.h"/>
+        </class>
+        <class className="APChildSelectorViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/APChildSelectorViewController.h"/>
+        </class>
+        <class className="APGlobalNavigationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/APGlobalNavigationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeChildClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="filtersButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="homeButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="recommendedButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="wishListButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="childButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sidebarView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
