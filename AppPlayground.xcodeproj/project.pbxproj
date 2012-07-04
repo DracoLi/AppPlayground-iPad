@@ -51,6 +51,8 @@
 		D4811B9F15A39FA700A82E56 /* NSNumber+Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B9E15A39FA700A82E56 /* NSNumber+Currency.m */; };
 		D4811BA215A3A01A00A82E56 /* NSString+EasyIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811BA115A3A01A00A82E56 /* NSString+EasyIcon.m */; };
 		D4811BA515A3C04D00A82E56 /* APFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811BA415A3C04D00A82E56 /* APFavorites.m */; };
+		D4811BAA15A3CC3F00A82E56 /* sample-apps.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4811BA915A3CC3F00A82E56 /* sample-apps.plist */; };
+		D4811BB015A3D3D700A82E56 /* Constants.h in Sources */ = {isa = PBXBuildFile; fileRef = D4811BAF15A3D38300A82E56 /* Constants.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +198,8 @@
 		D4811BA115A3A01A00A82E56 /* NSString+EasyIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EasyIcon.m"; sourceTree = "<group>"; };
 		D4811BA315A3C04D00A82E56 /* APFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APFavorites.h; sourceTree = "<group>"; };
 		D4811BA415A3C04D00A82E56 /* APFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APFavorites.m; sourceTree = "<group>"; };
+		D4811BA915A3CC3F00A82E56 /* sample-apps.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "sample-apps.plist"; sourceTree = "<group>"; };
+		D4811BAF15A3D38300A82E56 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +337,7 @@
 		D44629DE159E309500714339 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D4811BA815A3CC3F00A82E56 /* Data */,
 				D44629DF159E309500714339 /* Images */,
 			);
 			path = Assets;
@@ -506,6 +511,15 @@
 			path = Rating;
 			sourceTree = "<group>";
 		};
+		D4811BA815A3CC3F00A82E56 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D4811BA915A3CC3F00A82E56 /* sample-apps.plist */,
+				D4811BAF15A3D38300A82E56 /* Constants.h */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -657,6 +671,7 @@
 				D4811B9415A395A100A82E56 /* star.png in Resources */,
 				D4811B9515A395A100A82E56 /* starhalf.png in Resources */,
 				D4811B9615A395A100A82E56 /* starhighlighted.png in Resources */,
+				D4811BAA15A3CC3F00A82E56 /* sample-apps.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +719,7 @@
 				D4811B9915A39A7D00A82E56 /* APApp.m in Sources */,
 				D4811BA215A3A01A00A82E56 /* NSString+EasyIcon.m in Sources */,
 				D4811BA515A3C04D00A82E56 /* APFavorites.m in Sources */,
+				D4811BB015A3D3D700A82E56 /* Constants.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

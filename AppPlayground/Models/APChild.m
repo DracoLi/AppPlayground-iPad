@@ -19,31 +19,32 @@
 @synthesize interests = _interests;
 
 // General keys
-#define ChildrenListKey       @"ChildrenListKey"
-#define CurrentChildrenKey    @"CurrentChildKey"
+#define kChildrenListKey       @"ChildrenListKey"
+#define kCurrentChildrenKey    @"CurrentChildKey"
 
 // Child property keys
-#define ChildIDKey            @"ChildIDKey"
-#define ChildNameKey          @"ChildNameKey"
-#define ChildAgeKey           @"ChildAgeKey"
-#define ChildInterestsKey     @"ChildInterestsKey"
+#define kChildIDKey            @"ChildIDKey"
+#define kChildNameKey          @"ChildNameKey"
+#define kChildAgeKey           @"ChildAgeKey"
+#define kChildInterestsKey     @"ChildInterestsKey"
+
 
 - (id)initWithCoder:(NSCoder *)decoder {
   self = [super init];
   if(self) {
-    _childID    = [decoder decodeIntegerForKey:ChildIDKey];
-    _name       = [decoder decodeObjectForKey:ChildNameKey];
-    _age        = [decoder decodeIntegerForKey:ChildAgeKey];
-    _interests  = [decoder decodeObjectForKey:ChildInterestsKey];
+    _childID    = [decoder decodeIntegerForKey:kChildIDKey];
+    _name       = [decoder decodeObjectForKey:kChildNameKey];
+    _age        = [decoder decodeIntegerForKey:kChildAgeKey];
+    _interests  = [decoder decodeObjectForKey:kChildInterestsKey];
   }
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-  [encoder encodeInteger:self.childID forKey:ChildIDKey];
-  [encoder encodeObject:self.name forKey:ChildNameKey];
-  [encoder encodeInteger:self.age forKey:ChildAgeKey];
-  [encoder encodeObject:self.interests forKey:ChildInterestsKey];
+  [encoder encodeInteger:self.childID forKey:kChildIDKey];
+  [encoder encodeObject:self.name forKey:kChildNameKey];
+  [encoder encodeInteger:self.age forKey:kChildAgeKey];
+  [encoder encodeObject:self.interests forKey:kChildInterestsKey];
 }
 
 - (NSString *)description {
@@ -66,7 +67,7 @@
 #pragma mark - Class methods
 
 + (NSArray *)getChildren {
-  return [APPersistenceManager getDataFromDefaults:ChildrenListKey];
+  return [APPersistenceManager getDataFromDefaults:kChildrenListKey];
 }
 
 + (void)addChild:(APChild *)child {
@@ -78,7 +79,7 @@
 }
 
 + (void)setChildren:(NSArray *)children {
-  [APPersistenceManager saveObjectToDefaults:children key:ChildrenListKey];
+  [APPersistenceManager saveObjectToDefaults:children key:kChildrenListKey];
 }
 
 + (void)updateChildren:(APChild *)child {
@@ -104,11 +105,11 @@
 }
 
 + (APChild *)getCurrentChild {
-  return [APPersistenceManager getDataFromDefaults:CurrentChildrenKey];
+  return [APPersistenceManager getDataFromDefaults:kCurrentChildrenKey];
 }
 
 + (void)setCurrentChild:(APChild *)child {
-  [APPersistenceManager saveObjectToDefaults:child key:CurrentChildrenKey];
+  [APPersistenceManager saveObjectToDefaults:child key:kCurrentChildrenKey];
 }
 
 #pragma mark - Debug

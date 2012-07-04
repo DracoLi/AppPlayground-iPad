@@ -21,6 +21,7 @@
     return;
   }
   
+  // Add to storage
   NSMutableArray *favorites = [[NSMutableArray alloc] 
                                initWithArray:[APFavorites getAllFavorites]];
   [favorites addObject:app];
@@ -41,6 +42,16 @@
 + (BOOL)isAppFavorited:(APApp *)app {
   NSArray *favorites = [APFavorites getAllFavorites];
   return [favorites containsObject:app];
+}
+
++ (BOOL)toggleFavoriteStatus:(APApp *)app {
+  BOOL isFavorited = [APFavorites isAppFavorited:app];
+  if (isFavorited) {
+    [APFavorites removeFromFavorites:app];
+  } else {
+    [APFavorites addToFavorites:app];
+  }
+  return !isFavorited;
 }
 
 @end

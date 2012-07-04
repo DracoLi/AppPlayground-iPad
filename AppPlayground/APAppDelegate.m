@@ -7,9 +7,11 @@
 //
 
 #import "APAppDelegate.h"
-
+#import <RestKit/RestKit.h>
 #import <Parse/Parse.h>
 #import "Flurry.h"
+#import "Constants.h"
+#import "APChild.h"
 
 @implementation APAppDelegate
 
@@ -25,7 +27,28 @@
   [Flurry setDebugLogEnabled:(DEBUG && NO)];
   [Flurry startSession:@"Z2VVTNDDKGJDCMYZH368"];
   
+  // Initialize RestKit
+  [self initializeRestKit];
+  
   return YES;
+}
+
+- (void)initializeRestKit {
+  // Create the object manager
+  RKObjectManager *objectManager = [RKObjectManager 
+                                    managerWithBaseURLString:kServerBaseURLString];
+  objectManager.client.baseURL = objectManager.baseURL;
+  
+  // Enable automatic network activity indicator management
+  objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
+  
+  // Setup our object mappings
+  RKObjectMapping* childMapping = [RKObjectMapping mappingForClass:[APChild class]];
+//  [childMapping mapKeyPath:@"id" toAttribute:@"userID"];
+//  [childMapping mapKeyPath:@"screen_name" toAttribute:@"screenName"];
+//  [childMapping mapAttributes:@"name", nil];
+  [objectManager.mappingProvider setObjectMapping:childMapping forKeyPath:@"child"];
+  
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

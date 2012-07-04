@@ -8,8 +8,28 @@ Draco's Todos
   2. <s>Flurry</s>
   3. <s>RestKit</s>
   4. <s>SDImageView</s>
+
+- Global navigation sidebar
+  1. Child selector
   
 - Home Screen section
-  1. Global navigation sidebar
+  1. Results Table (refresh functionality) 
+    - App Icon Cell
+      - RateView
     - Potential improvement: Make it tableview to benefit from scrolling
-  2. Content table view
+
+- Models
+  1. App
+  2. Favorites
+  3. Child
+
+- Utils
+  - PersistenceManager
+  
+- Categories
+  - Currency handler
+  - Easy icon
+  
+## General
+- Server side stuff
+  - Script that gets all homepage content for user

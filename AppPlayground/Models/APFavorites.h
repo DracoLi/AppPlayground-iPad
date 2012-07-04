@@ -12,8 +12,15 @@
 @interface APFavorites : NSObject
 
 + (void)addToFavorites:(APApp *)app;
+
 + (void)removeFromFavorites:(APApp *)app;
+
 + (NSArray *)getAllFavorites;
+
 + (BOOL)isAppFavorited:(APApp *)app;
+
+// Toggle the app's current favorite status.
+// Returns the status after the toggle
++ (BOOL)toggleFavoriteStatus:(APApp *)app;
 
 @end

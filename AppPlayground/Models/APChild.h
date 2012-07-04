@@ -16,14 +16,20 @@
 @property (assign, nonatomic) NSUInteger age;
 
 + (NSArray *)getChildren;
+
 + (APChild *)getCurrentChild;
+
 + (void)setChildren:(NSArray *)children;
+
 + (void)setCurrentChild:(APChild *)child;
+
 + (void)addChild:(APChild *)child;
+
 + (void)updateChildren:(APChild *)child;
 
 #ifdef DEBUG
 + (void)populateChildren;
+
 + (void)test;
 #endif
 

@@ -7,6 +7,7 @@
 //
 
 #import "APApp.h"
+#import "APFavorites.h"
 
 @implementation APApp
 @synthesize name = _name;
@@ -16,28 +17,28 @@
 @synthesize generalRatings = _generalRatings;
 
 // App property keys
-#define AppNameKey              @"AppNameKey"
-#define AppCategoryKey          @"AppCategoryKey"
-#define AppIconURLKey           @"AppIconURLKey"
-#define AppPriceKey             @"AppPriceKey"
-#define AppGeneralRatingKey     @"AppGeneralRatingKey"
+#define kAppNameKey              @"AppNameKey"
+#define kAppCategoryKey          @"AppCategoryKey"
+#define kAppIconURLKey           @"AppIconURLKey"
+#define kAppPriceKey             @"AppPriceKey"
+#define kAppGeneralRatingKey     @"AppGeneralRatingKey"
 
 - (id)initWithCoder:(NSCoder *)decoder {
   self = [super init];
   if(self) {
-    _name             = [decoder decodeObjectForKey:AppNameKey];
-    _category         = [decoder decodeObjectForKey:AppCategoryKey];
-    _iconURLString    = [decoder decodeObjectForKey:AppIconURLKey];
-    _generalRatings   = [decoder decodeObjectForKey:AppGeneralRatingKey];
+    _name             = [decoder decodeObjectForKey:kAppNameKey];
+    _category         = [decoder decodeObjectForKey:kAppCategoryKey];
+    _iconURLString    = [decoder decodeObjectForKey:kAppIconURLKey];
+    _generalRatings   = [decoder decodeObjectForKey:kAppGeneralRatingKey];
   }
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-  [encoder encodeObject:self.name forKey:AppNameKey];
-  [encoder encodeObject:self.category forKey:AppCategoryKey];
-  [encoder encodeObject:self.iconURLString forKey:AppIconURLKey];
-  [encoder encodeObject:self.generalRatings forKey:AppGeneralRatingKey];
+  [encoder encodeObject:self.name forKey:kAppNameKey];
+  [encoder encodeObject:self.category forKey:kAppCategoryKey];
+  [encoder encodeObject:self.iconURLString forKey:kAppIconURLKey];
+  [encoder encodeObject:self.generalRatings forKey:kAppGeneralRatingKey];
 }
 
 - (NSString *)description {
@@ -59,6 +60,12 @@
     }
   }
   return false;
+}
+
+#pragma mark - Custom methods
+
+- (BOOL)isFavorited {
+  return [APFavorites isAppFavorited:self];
 }
 
 @end

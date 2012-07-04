@@ -7,10 +7,10 @@
 //
 
 #import "APAppIconCell.h"
-
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSNumber+Currency.h"
 #import "NSString+EasyIcon.h"
+#import "APFavorites.h"
 
 @implementation APAppIconCell
 @synthesize app = _app;
@@ -22,11 +22,13 @@
 @synthesize categoryImageView = _categoryImageView;
 @synthesize categoryLabel = _categoryLabel;
 
+#define PlaceHolderImage  @"appIcon-placeholder.png"
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
-    // Initialization code
+    [self clearAll];
   }
   
   return self;
@@ -46,12 +48,13 @@
     self.categoryLabel.text = app.category;
     self.categoryImageView.image = [app.category getImageIcon];
     [self.iconImageView setImageWithURL:[NSURL URLWithString:app.iconURLString]
-                       placeholderImage:[UIImage imageNamed:@"appIcon-placeholder.png"]
+                       placeholderImage:[UIImage imageNamed:PlaceHolderImage]
                                 success:nil 
                                 failure:^(NSError *error) {
                                   NSLog(@"image loading error: %@", error.description);
                                 }];
     self.ratingsView.rating = [app.generalRatings floatValue];
+    self.favButton.selected = [app isFavorited];
   } else {
     [self clearAll];
   }
@@ -62,10 +65,13 @@
   self.appPriceLabel.text = nil;
   self.categoryLabel.text = nil;
   self.categoryImageView.image = nil;
+  self.iconImageView.image = [UIImage imageNamed:PlaceHolderImage];
+  self.ratingsView.rating = 0;
+  self.favButton.selected = NO;
 }
 
 - (IBAction)favButtonClicked:(UIButton *)sender {
-  
+  [APFavorites toggleFavoriteStatus:self.app];
 }
 
 @end

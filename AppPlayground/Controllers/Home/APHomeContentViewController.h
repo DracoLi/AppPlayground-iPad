@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APChild.h"
 
 @interface APHomeContentViewController : UIViewController
+<UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) APChild       *currentChild;
+@property (strong, nonatomic) UITableView   *tableView;
+@property (strong, nonatomic) NSArray       *appData;
+
+// Update the whole view to reflect new child
+- (void)updateViewForCurrentChild;
 
 @end

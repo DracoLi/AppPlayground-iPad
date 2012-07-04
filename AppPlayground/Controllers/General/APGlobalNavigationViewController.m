@@ -7,6 +7,7 @@
 //
 
 #import "APGlobalNavigationViewController.h"
+#import "Constants.h"
 
 @interface APGlobalNavigationViewController ()
 
@@ -118,6 +119,10 @@
   
   // Update global child
   [APChild setCurrentChild:child];
+  
+  // Post notification that child is changed
+  [[NSNotificationCenter defaultCenter] postNotificationName:kCurrentChildNotification
+                                                      object:self];
 }
 
 #pragma mark - Popover delegate

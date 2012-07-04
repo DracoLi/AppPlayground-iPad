@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSNumber *price;
 @property (strong, nonatomic) NSNumber *generalRatings;
 
+- (BOOL)isFavorited;
 
 @end
