@@ -11,3 +11,5 @@ Draco's Todos
   
 - Home Screen section
   1. Global navigation sidebar
+    - Potential improvement: Make it tableview to benefit from scrolling
+  2. Content table view

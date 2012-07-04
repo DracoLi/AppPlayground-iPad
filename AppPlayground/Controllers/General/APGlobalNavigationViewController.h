@@ -14,21 +14,21 @@
 <UIPopoverControllerDelegate, APChildSelectorDelegate>
 
 // General Properties
-@property (nonatomic, strong) IBOutlet UIView *sidebarView;
-@property (nonatomic, strong) IBOutlet UIView *contentView;
-@property (nonatomic, weak) UIViewController *currentViewController;
+@property (strong, nonatomic) IBOutlet UIView *sidebarView;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) UIViewController *currentViewController;
 
 // Sidebar views
 @property (strong, nonatomic) IBOutlet UIButton *childButton;
-@property (nonatomic, strong) UIPopoverController *childSelectorPopover;
+@property (strong, nonatomic) UIPopoverController *childSelectorPopover;
 
 // Content views
-@property (nonatomic, strong) UIViewController *homeViewController;
-@property (nonatomic, strong) UIViewController *recommendedViewController;
-@property (nonatomic, strong) UIViewController *filtersViewController;
-@property (nonatomic, strong) UIViewController *wishListViewController;
-@property (nonatomic, strong) UIViewController *profileViewController;
-@property (nonatomic, strong) UIViewController *aboutViewController;
+@property (strong, nonatomic) UIViewController *homeViewController;
+@property (strong, nonatomic) UIViewController *recommendedViewController;
+@property (strong, nonatomic) UIViewController *filtersViewController;
+@property (strong, nonatomic) UIViewController *wishListViewController;
+@property (strong, nonatomic) UIViewController *profileViewController;
+@property (strong, nonatomic) UIViewController *aboutViewController;
 
 //////// Methods ///////
 

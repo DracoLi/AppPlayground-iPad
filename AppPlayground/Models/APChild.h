@@ -10,10 +10,10 @@
 
 @interface APChild : NSObject <NSCoding>
 
-@property (nonatomic) NSUInteger childID;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSArray *interests;
-@property (nonatomic) NSUInteger age;
+@property (assign, nonatomic) NSUInteger childID;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSArray *interests;
+@property (assign, nonatomic) NSUInteger age;
 
 + (NSArray *)getChildren;
 + (APChild *)getCurrentChild;

@@ -25,7 +25,7 @@
 @synthesize profileViewController = _profileViewController;
 @synthesize aboutViewController = _aboutViewController;
 
-#pragma Intialization
+#pragma mark - Intialization
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,7 +47,6 @@
                                             instantiateViewControllerWithIdentifier:@"ChildSelectorView"];
   content.delegate = self;
   self.childSelectorPopover = [[UIPopoverController alloc] initWithContentViewController:content];
-  self.childSelectorPopover.popoverContentSize = CGSizeMake(350, 300);
   self.childSelectorPopover.delegate = self;
   
   // Update current child
@@ -63,7 +62,7 @@
   [self setContentView:nil];
 }
 
-#pragma Actions
+#pragma mark - Actions
 
 - (IBAction)changeChildClicked:(UIButton *)sender {
   [self.childSelectorPopover presentPopoverFromRect:sender.frame 

@@ -29,7 +29,6 @@
 		D440EFC115A1123500004C38 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFB015A1057600004C38 /* libRestKit.a */; };
 		D44629ED159E309500714339 /* APDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629E4159E309500714339 /* APDataViewController.m */; };
 		D44629EE159E309500714339 /* APRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629E6159E309500714339 /* APRootViewController.m */; };
-		D44629EF159E309500714339 /* APModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = D44629EA159E309500714339 /* APModelController.m */; };
 		D46859D315A2114C0073AC87 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */; };
 		D46859D515A2115C0073AC87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D415A2115B0073AC87 /* ImageIO.framework */; };
 		D46859D815A213020073AC87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D715A213020073AC87 /* CoreLocation.framework */; };
@@ -40,6 +39,18 @@
 		D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A4915A273BC0073AC87 /* APChildSelectorViewController.m */; };
 		D4685A6715A285C90073AC87 /* APPersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4685A6615A285C90073AC87 /* APPersistenceManager.m */; };
 		D4811B7515A3762500A82E56 /* APChildCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B7415A3762500A82E56 /* APChildCell.m */; };
+		D4811B7915A37E8000A82E56 /* APHomeContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B7815A37E8000A82E56 /* APHomeContentViewController.m */; };
+		D4811B7C15A37ECE00A82E56 /* HomeContentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4811B7B15A37ECE00A82E56 /* HomeContentStoryboard.storyboard */; };
+		D4811B8215A3877E00A82E56 /* APAppIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B8115A3877E00A82E56 /* APAppIconCell.m */; };
+		D4811B8415A387B300A82E56 /* APAppIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4811B8315A387B300A82E56 /* APAppIconCell.xib */; };
+		D4811B9015A3927F00A82E56 /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B8E15A3927F00A82E56 /* RateView.m */; };
+		D4811B9415A395A100A82E56 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = D4811B9115A395A100A82E56 /* star.png */; };
+		D4811B9515A395A100A82E56 /* starhalf.png in Resources */ = {isa = PBXBuildFile; fileRef = D4811B9215A395A100A82E56 /* starhalf.png */; };
+		D4811B9615A395A100A82E56 /* starhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = D4811B9315A395A100A82E56 /* starhighlighted.png */; };
+		D4811B9915A39A7D00A82E56 /* APApp.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B9815A39A7D00A82E56 /* APApp.m */; };
+		D4811B9F15A39FA700A82E56 /* NSNumber+Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B9E15A39FA700A82E56 /* NSNumber+Currency.m */; };
+		D4811BA215A3A01A00A82E56 /* NSString+EasyIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811BA115A3A01A00A82E56 /* NSString+EasyIcon.m */; };
+		D4811BA515A3C04D00A82E56 /* APFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811BA415A3C04D00A82E56 /* APFavorites.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,8 +161,6 @@
 		D44629E4159E309500714339 /* APDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APDataViewController.m; sourceTree = "<group>"; };
 		D44629E5159E309500714339 /* APRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRootViewController.h; sourceTree = "<group>"; };
 		D44629E6159E309500714339 /* APRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRootViewController.m; sourceTree = "<group>"; };
-		D44629E9159E309500714339 /* APModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APModelController.h; sourceTree = "<group>"; };
-		D44629EA159E309500714339 /* APModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APModelController.m; sourceTree = "<group>"; };
 		D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = Frameworks/SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		D46859D415A2115B0073AC87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D46859D715A213020073AC87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -168,6 +177,25 @@
 		D4685A6615A285C90073AC87 /* APPersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPersistenceManager.m; sourceTree = "<group>"; };
 		D4811B7315A3762500A82E56 /* APChildCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APChildCell.h; path = General/APChildCell.h; sourceTree = "<group>"; };
 		D4811B7415A3762500A82E56 /* APChildCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APChildCell.m; path = General/APChildCell.m; sourceTree = "<group>"; };
+		D4811B7715A37E8000A82E56 /* APHomeContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHomeContentViewController.h; sourceTree = "<group>"; };
+		D4811B7815A37E8000A82E56 /* APHomeContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHomeContentViewController.m; sourceTree = "<group>"; };
+		D4811B7B15A37ECE00A82E56 /* HomeContentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeContentStoryboard.storyboard; sourceTree = "<group>"; };
+		D4811B8015A3877E00A82E56 /* APAppIconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAppIconCell.h; sourceTree = "<group>"; };
+		D4811B8115A3877E00A82E56 /* APAppIconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAppIconCell.m; sourceTree = "<group>"; };
+		D4811B8315A387B300A82E56 /* APAppIconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APAppIconCell.xib; sourceTree = "<group>"; };
+		D4811B8E15A3927F00A82E56 /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
+		D4811B8F15A3927F00A82E56 /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
+		D4811B9115A395A100A82E56 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		D4811B9215A395A100A82E56 /* starhalf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starhalf.png; sourceTree = "<group>"; };
+		D4811B9315A395A100A82E56 /* starhighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starhighlighted.png; sourceTree = "<group>"; };
+		D4811B9715A39A7D00A82E56 /* APApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APApp.h; sourceTree = "<group>"; };
+		D4811B9815A39A7D00A82E56 /* APApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APApp.m; sourceTree = "<group>"; };
+		D4811B9D15A39FA700A82E56 /* NSNumber+Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Currency.h"; sourceTree = "<group>"; };
+		D4811B9E15A39FA700A82E56 /* NSNumber+Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Currency.m"; sourceTree = "<group>"; };
+		D4811BA015A3A01A00A82E56 /* NSString+EasyIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+EasyIcon.h"; sourceTree = "<group>"; };
+		D4811BA115A3A01A00A82E56 /* NSString+EasyIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+EasyIcon.m"; sourceTree = "<group>"; };
+		D4811BA315A3C04D00A82E56 /* APFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APFavorites.h; sourceTree = "<group>"; };
+		D4811BA415A3C04D00A82E56 /* APFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APFavorites.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +341,7 @@
 		D44629DF159E309500714339 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D4811B8515A388B800A82E56 /* Testing */,
 				D44629E0159E309500714339 /* General */,
 			);
 			path = Images;
@@ -328,6 +357,10 @@
 		D44629E1159E309500714339 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D4811B9D15A39FA700A82E56 /* NSNumber+Currency.h */,
+				D4811B9E15A39FA700A82E56 /* NSNumber+Currency.m */,
+				D4811BA015A3A01A00A82E56 /* NSString+EasyIcon.h */,
+				D4811BA115A3A01A00A82E56 /* NSString+EasyIcon.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -335,10 +368,12 @@
 		D44629E2159E309500714339 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4811B7D15A3871A00A82E56 /* Details */,
 				D44629E3159E309500714339 /* APDataViewController.h */,
 				D44629E4159E309500714339 /* APDataViewController.m */,
 				D44629E5159E309500714339 /* APRootViewController.h */,
 				D44629E6159E309500714339 /* APRootViewController.m */,
+				D4811B7615A37E0100A82E56 /* Home */,
 				D44629E7159E309500714339 /* General */,
 			);
 			path = Controllers;
@@ -358,10 +393,12 @@
 		D44629E8159E309500714339 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D44629E9159E309500714339 /* APModelController.h */,
-				D44629EA159E309500714339 /* APModelController.m */,
 				D4685A3215A262F60073AC87 /* APChild.h */,
 				D4685A3315A262F60073AC87 /* APChild.m */,
+				D4811B9715A39A7D00A82E56 /* APApp.h */,
+				D4811B9815A39A7D00A82E56 /* APApp.m */,
+				D4811BA315A3C04D00A82E56 /* APFavorites.h */,
+				D4811BA415A3C04D00A82E56 /* APFavorites.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,6 +406,9 @@
 		D44629EC159E309500714339 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D4811B7F15A3875200A82E56 /* App */,
+				D4811B7E15A3872900A82E56 /* Details */,
+				D4811B7A15A37EA200A82E56 /* Home */,
 				D46859F615A21F930073AC87 /* General */,
 				D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */,
 			);
@@ -403,6 +443,67 @@
 			);
 			name = Flurry;
 			path = Frameworks/Flurry;
+			sourceTree = "<group>";
+		};
+		D4811B7615A37E0100A82E56 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D4811B7715A37E8000A82E56 /* APHomeContentViewController.h */,
+				D4811B7815A37E8000A82E56 /* APHomeContentViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D4811B7A15A37EA200A82E56 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D4811B7B15A37ECE00A82E56 /* HomeContentStoryboard.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D4811B7D15A3871A00A82E56 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		D4811B7E15A3872900A82E56 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		D4811B7F15A3875200A82E56 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D4811B8A15A3922300A82E56 /* Rating */,
+				D4811B8015A3877E00A82E56 /* APAppIconCell.h */,
+				D4811B8115A3877E00A82E56 /* APAppIconCell.m */,
+				D4811B8315A387B300A82E56 /* APAppIconCell.xib */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D4811B8515A388B800A82E56 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				D4811B9115A395A100A82E56 /* star.png */,
+				D4811B9215A395A100A82E56 /* starhalf.png */,
+				D4811B9315A395A100A82E56 /* starhighlighted.png */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		D4811B8A15A3922300A82E56 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				D4811B8F15A3927F00A82E56 /* RateView.h */,
+				D4811B8E15A3927F00A82E56 /* RateView.m */,
+			);
+			path = Rating;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,6 +652,11 @@
 				D4078ED21598EC9F000C0E4E /* InfoPlist.strings in Resources */,
 				D4078EE41598ECA0000C0E4E /* MainStoryboard.storyboard in Resources */,
 				D4685A2515A2402E0073AC87 /* NavigationStoryboard.storyboard in Resources */,
+				D4811B7C15A37ECE00A82E56 /* HomeContentStoryboard.storyboard in Resources */,
+				D4811B8415A387B300A82E56 /* APAppIconCell.xib in Resources */,
+				D4811B9415A395A100A82E56 /* star.png in Resources */,
+				D4811B9515A395A100A82E56 /* starhalf.png in Resources */,
+				D4811B9615A395A100A82E56 /* starhighlighted.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,12 +694,16 @@
 				D4078ED81598EC9F000C0E4E /* APAppDelegate.m in Sources */,
 				D44629ED159E309500714339 /* APDataViewController.m in Sources */,
 				D44629EE159E309500714339 /* APRootViewController.m in Sources */,
-				D44629EF159E309500714339 /* APModelController.m in Sources */,
 				D46859F415A21F680073AC87 /* APGlobalNavigationViewController.m in Sources */,
 				D4685A3415A262F60073AC87 /* APChild.m in Sources */,
 				D4685A4B15A273BC0073AC87 /* APChildSelectorViewController.m in Sources */,
 				D4685A6715A285C90073AC87 /* APPersistenceManager.m in Sources */,
 				D4811B7515A3762500A82E56 /* APChildCell.m in Sources */,
+				D4811B7915A37E8000A82E56 /* APHomeContentViewController.m in Sources */,
+				D4811B8215A3877E00A82E56 /* APAppIconCell.m in Sources */,
+				D4811B9915A39A7D00A82E56 /* APApp.m in Sources */,
+				D4811BA215A3A01A00A82E56 /* NSString+EasyIcon.m in Sources */,
+				D4811BA515A3C04D00A82E56 /* APFavorites.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +711,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4811B9015A3927F00A82E56 /* RateView.m in Sources */,
+				D4811B9F15A39FA700A82E56 /* NSNumber+Currency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
