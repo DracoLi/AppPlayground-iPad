@@ -67,13 +67,14 @@
   
   APChild *currentChild = [APChild getCurrentChild];
   
-  // TODO: Get new data for this child from server
-  
-  
-  // TODO: Update UI to reflect new child
-  
-  // Update table
-  [self.tableView reloadData];
+  // Get new data for this child from server
+  // UI updates are handled in the delegate that receives the apps
+  NSString *resourcesPath = [@"/home" stringByAppendingQueryParameters:
+                             [currentChild queryDictionary]];
+  [[RKObjectManager sharedManager] 
+   loadObjectsAtResourcePath:resourcesPath usingBlock:^(RKObjectLoader *loader) {
+     loader.delegate = self;
+  }];
 }
 
 #pragma mark - Table view data source
@@ -102,12 +103,28 @@
   
 }
 
+#pragma mark - Server Response Delegate
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjectDictionary:(NSDictionary *)dictionary {
+  
+  // Store the new apps
+  
+  // TODO: Handle UI updates for new apps
+  
+  [self.tableView reloadData];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+  
+  // TODO: Handle failure UI updates
+}
+
+
 #pragma mark - Others
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
 }
-
 
 @end

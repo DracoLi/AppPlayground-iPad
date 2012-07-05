@@ -15,6 +15,10 @@
 @property (strong, nonatomic) NSArray *interests;
 @property (assign, nonatomic) NSUInteger age;
 
+// Returns the child information we pass for queries on the server
+- (NSDictionary *)queryDictionary;
+
+
 + (NSArray *)getChildren;
 
 + (APChild *)getCurrentChild;

@@ -64,6 +64,14 @@
   return false;
 }
 
+- (NSDictionary *)queryDictionary {
+  return [[NSDictionary alloc] initWithObjectsAndKeys: 
+          self.name, @"name", 
+          self.interests, @"interests", 
+          self.age , @"age", 
+          nil];
+}
+
 #pragma mark - Class methods
 
 + (NSArray *)getChildren {

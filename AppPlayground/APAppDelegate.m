@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import "Flurry.h"
 #import "Constants.h"
-#import "APChild.h"
+#import "APApp.h"
 
 @implementation APAppDelegate
 
@@ -43,11 +43,11 @@
   objectManager.client.requestQueue.showsNetworkActivityIndicatorWhenBusy = YES;
   
   // Setup our object mappings
-  RKObjectMapping* childMapping = [RKObjectMapping mappingForClass:[APChild class]];
+  RKObjectMapping *appMapping = [RKObjectMapping mappingForClass:[APApp class]];
 //  [childMapping mapKeyPath:@"id" toAttribute:@"userID"];
 //  [childMapping mapKeyPath:@"screen_name" toAttribute:@"screenName"];
 //  [childMapping mapAttributes:@"name", nil];
-  [objectManager.mappingProvider setObjectMapping:childMapping forKeyPath:@"child"];
+  [objectManager.mappingProvider setObjectMapping:appMapping forKeyPath:@"app"];
   
 }
 

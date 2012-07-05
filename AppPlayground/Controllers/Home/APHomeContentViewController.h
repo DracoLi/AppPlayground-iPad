@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 #import "APChild.h"
 
 @interface APHomeContentViewController : UIViewController
-<UITableViewDelegate, UITableViewDataSource>
+<UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
 
 @property (strong, nonatomic) APChild       *currentChild;
 @property (strong, nonatomic) UITableView   *tableView;
