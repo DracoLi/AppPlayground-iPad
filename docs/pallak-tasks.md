@@ -10,3 +10,4 @@ Pallak's Todos
 - Modelling
   1. Populate project with some sample app data
     - located in Assets/Data/sample-apps.plist
+    

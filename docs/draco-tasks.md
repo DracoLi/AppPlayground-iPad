@@ -8,8 +8,9 @@ Draco's Todos
   2. <s>Flurry</s>
   3. <s>RestKit</s>
   4. <s>SDImageView</s>
-
-- Global navigation sidebar
+  5. [SVPullToRefresh](https://github.com/samvermette/SVPullToRefresh#readme)
+  
+- Global navigation Sidebar
   1. Child selector
   
 - Home Screen section

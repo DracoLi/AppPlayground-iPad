@@ -11,7 +11,7 @@
 @implementation NSString (EasyIcon)
 
 - (UIImage *)getImageIcon {
-  NSString *imagePath = [NSString stringWithFormat:@"%#_icon.png", self];
+  NSString *imagePath = [NSString stringWithFormat:@"%@_icon.png", self];
   return [UIImage imageNamed:imagePath];
 }
 

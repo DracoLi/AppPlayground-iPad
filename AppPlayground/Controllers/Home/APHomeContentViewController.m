@@ -7,8 +7,11 @@
 //
 
 #import "APHomeContentViewController.h"
+#import "SVPullToRefresh.h"
 #import "Constants.h"
 #import "APChild.h"
+#import "APApp.h"
+#import "APAppIconView.h"
 
 @interface APHomeContentViewController ()
 - (void)currentChildChanged:(NSNotification *)notification;
@@ -26,6 +29,7 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     // Custom initialization
+    _appData = [[APHomeTableData alloc] init];
   }
   return self;
 }
@@ -40,21 +44,31 @@
                                                name:kCurrentChildNotification
                                              object:nil];
   
-  // This method populates our whole homeview
+  // TODO: customzie refresh view according to UI
+  // self.tableView.pullToRefreshView.arrowColor = [UIColor whiteColor];
+  
+  // Initialize our tableview refresh
+  __weak APHomeContentViewController *weakSelf = self;
+  [self.tableView addPullToRefreshWithActionHandler:^{
+    [weakSelf updateViewForCurrentChild];
+  }];
+  
+  // Register our tableview with our custom app cells
+  [self.tableView registerNib:[UINib nibWithNibName:@"APAppIconCell" bundle:nil]
+       forCellReuseIdentifier:@"AppIconCellIdentifier"];
+  
+  // Populates our home view
   [self updateViewForCurrentChild];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
   [super viewDidUnload];
-  
-  
 }
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                   name:kCurrentChildNotification
-                                                object:nil]; 
+                                                object:nil];
 }
 
 #pragma mark - Custom
@@ -79,27 +93,30 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-  // Return the number of sections.
-  return 1;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return [self.appData sections];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section {
+  return [self.appData rowsForSection:section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  APAppIconView *cell = [tableView dequeueReusableCellWithIdentifier:@"AppIconCellIdentifier"];
+  APApp *thisApp = [self.appData appForIndexPath:indexPath];
+  [cell bindApp:thisApp];
+  return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+  // TODO: return custom header
   
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  
-}
-
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
 }
 
@@ -108,6 +125,7 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjectDictionary:(NSDictionary *)dictionary {
   
   // Store the new apps
+  self.appData.rawData = dictionary;
   
   // TODO: Handle UI updates for new apps
   
@@ -116,6 +134,7 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
   
+  NSLog(@"error getting home apps: %@", [error localizedDescription]);
   // TODO: Handle failure UI updates
 }
 

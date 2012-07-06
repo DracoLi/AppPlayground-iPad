@@ -44,11 +44,10 @@
   
   // Setup our object mappings
   RKObjectMapping *appMapping = [RKObjectMapping mappingForClass:[APApp class]];
-//  [childMapping mapKeyPath:@"id" toAttribute:@"userID"];
-//  [childMapping mapKeyPath:@"screen_name" toAttribute:@"screenName"];
-//  [childMapping mapAttributes:@"name", nil];
+//  [appMapping mapKeyPath:@"id" toAttribute:@"userID"];
+//  [appMapping mapKeyPath:@"screen_name" toAttribute:@"screenName"];
+//  [appMapping mapAttributes:@"name", nil];
   [objectManager.mappingProvider setObjectMapping:appMapping forKeyPath:@"app"];
-  
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

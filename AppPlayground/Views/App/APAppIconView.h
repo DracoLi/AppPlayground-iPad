@@ -10,7 +10,7 @@
 #import "APApp.h"
 #import "RateView.h"
 
-@interface APAppIconCell : UITableViewCell
+@interface APAppIconView : UITableViewCell
 
 @property (strong, nonatomic) APApp *app;
 @property (strong, nonatomic) IBOutlet UIImageView *iconImageView;

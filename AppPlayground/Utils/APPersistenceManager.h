@@ -11,11 +11,14 @@
 @interface APPersistenceManager : NSObject
 
 /// File persistence ///
+
 + (NSString *)getPathForFileNamed:(NSString *)filename;
 
 + (NSString *)contentFromFileNamed:(NSString *)filename;
 
 + (void)writeToFileNamed:(NSString *)filename content:(NSString *)content;
+
+
 
 /// User defaults persistence ///
 

@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 AppPlayground. All rights reserved.
 //
 
-#import "APAppIconCell.h"
+#import "APAppIconView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSNumber+Currency.h"
 #import "NSString+EasyIcon.h"
 #import "APFavorites.h"
 
-@implementation APAppIconCell
+@implementation APAppIconView
 @synthesize app = _app;
 @synthesize iconImageView = _iconImageView;
 @synthesize appNameLabel = _appNameLabel;

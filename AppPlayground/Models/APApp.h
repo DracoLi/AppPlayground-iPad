@@ -10,9 +10,9 @@
 
 @interface APApp : NSObject <NSCoding>
 
-@property (copy, nonatomic) NSString *name;
-@property (copy, nonatomic) NSString *category;
-@property (copy, nonatomic) NSString *iconURLString;
+@property (copy, nonatomic)   NSString *name;
+@property (copy, nonatomic)   NSString *category;
+@property (copy, nonatomic)   NSString *iconURLString;
 @property (strong, nonatomic) NSNumber *price;
 @property (strong, nonatomic) NSNumber *generalRatings;
 
