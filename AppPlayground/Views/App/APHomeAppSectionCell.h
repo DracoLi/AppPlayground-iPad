@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APAppIconView.h"
 
 @interface APHomeAppSectionCell : UITableViewCell
-<UIScrollViewDelegate>
+<UIScrollViewDelegate, APAppIconViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *pageLabel;

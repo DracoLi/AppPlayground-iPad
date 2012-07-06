@@ -10,9 +10,16 @@
 #import "APApp.h"
 #import "RateView.h"
 
-@interface APAppIconView : UITableViewCell
+@class APAppIconView;
+@protocol APAppIconViewDelegate <NSObject>
+@optional
+- (void)appIconViewClicked:(APAppIconView *)view app:(APApp *)app;
+@end
+
+@interface APAppIconView : UIView
 
 @property (strong, nonatomic) APApp *app;
+@property (weak, nonatomic) id<APAppIconViewDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (strong, nonatomic) IBOutlet UILabel *appNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *appPriceLabel;
@@ -21,8 +28,12 @@
 @property (strong, nonatomic) IBOutlet UIImageView *categoryImageView;
 @property (strong, nonatomic) IBOutlet UILabel *categoryLabel;
 
+- (id)initWithDelegate:(id<APAppIconViewDelegate>)delegate;
+
 - (void)bindApp:(APApp *)app;
+
 - (void)clearAll;
+
 - (IBAction)favButtonClicked:(UIButton *)sender;
 
 @end
