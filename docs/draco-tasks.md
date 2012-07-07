@@ -21,6 +21,7 @@ Draco's Todos
 
 - Models
   1. App
+   - Also sample apps
   2. Favorites
   3. Child
 
