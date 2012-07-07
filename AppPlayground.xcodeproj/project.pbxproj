@@ -28,10 +28,10 @@
 		D440EFC015A106B200004C38 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFBF15A106B200004C38 /* libxml2.dylib */; };
 		D440EFC115A1123500004C38 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EFB015A1057600004C38 /* libRestKit.a */; };
 		D456A90F15A5F97C009156CE /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A90E15A5F97C009156CE /* SVPullToRefresh.m */; };
-		D456A91315A6027D009156CE /* APHomeTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A91215A6027D009156CE /* APHomeTableData.m */; };
 		D456A91A15A62396009156CE /* APHomeDefaultContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A91915A62396009156CE /* APHomeDefaultContentView.m */; };
 		D456A91D15A67FD5009156CE /* APHomeAppSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A91C15A67FD5009156CE /* APHomeAppSectionCell.m */; };
 		D456A91F15A681C9009156CE /* APHomeAppSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D456A91E15A681C8009156CE /* APHomeAppSectionCell.xib */; };
+		D456A93715A7D7C3009156CE /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B8E15A3927F00A82E56 /* RateView.m */; };
 		D46859D315A2114C0073AC87 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */; };
 		D46859D515A2115C0073AC87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D415A2115B0073AC87 /* ImageIO.framework */; };
 		D46859D815A213020073AC87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D715A213020073AC87 /* CoreLocation.framework */; };
@@ -46,7 +46,6 @@
 		D4811B7C15A37ECE00A82E56 /* HomeContentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4811B7B15A37ECE00A82E56 /* HomeContentStoryboard.storyboard */; };
 		D4811B8215A3877E00A82E56 /* APAppIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B8115A3877E00A82E56 /* APAppIconView.m */; };
 		D4811B8415A387B300A82E56 /* APAppIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4811B8315A387B300A82E56 /* APAppIconView.xib */; };
-		D4811B9015A3927F00A82E56 /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B8E15A3927F00A82E56 /* RateView.m */; };
 		D4811B9415A395A100A82E56 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = D4811B9115A395A100A82E56 /* star.png */; };
 		D4811B9515A395A100A82E56 /* starhalf.png in Resources */ = {isa = PBXBuildFile; fileRef = D4811B9215A395A100A82E56 /* starhalf.png */; };
 		D4811B9615A395A100A82E56 /* starhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = D4811B9315A395A100A82E56 /* starhighlighted.png */; };
@@ -55,7 +54,6 @@
 		D4811BA215A3A01A00A82E56 /* NSString+EasyIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811BA115A3A01A00A82E56 /* NSString+EasyIcon.m */; };
 		D4811BA515A3C04D00A82E56 /* APFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811BA415A3C04D00A82E56 /* APFavorites.m */; };
 		D4811BAA15A3CC3F00A82E56 /* sample-apps.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4811BA915A3CC3F00A82E56 /* sample-apps.plist */; };
-		D4811BB015A3D3D700A82E56 /* Constants.h in Sources */ = {isa = PBXBuildFile; fileRef = D4811BAF15A3D38300A82E56 /* Constants.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,11 +162,9 @@
 		D440EFBF15A106B200004C38 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		D456A90D15A5F97C009156CE /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		D456A90E15A5F97C009156CE /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
-		D456A91115A6027D009156CE /* APHomeTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHomeTableData.h; sourceTree = "<group>"; };
-		D456A91215A6027D009156CE /* APHomeTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHomeTableData.m; sourceTree = "<group>"; };
 		D456A91815A62395009156CE /* APHomeDefaultContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHomeDefaultContentView.h; sourceTree = "<group>"; };
 		D456A91915A62396009156CE /* APHomeDefaultContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHomeDefaultContentView.m; sourceTree = "<group>"; };
-		D456A91B15A67FD5009156CE /* APHomeAppSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = APHomeAppSectionCell.h; sourceTree = "<group>"; };
+		D456A91B15A67FD5009156CE /* APHomeAppSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHomeAppSectionCell.h; sourceTree = "<group>"; };
 		D456A91C15A67FD5009156CE /* APHomeAppSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHomeAppSectionCell.m; sourceTree = "<group>"; };
 		D456A91E15A681C8009156CE /* APHomeAppSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHomeAppSectionCell.xib; sourceTree = "<group>"; };
 		D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = Frameworks/SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
@@ -446,8 +442,6 @@
 		D456A91015A60260009156CE /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D456A91115A6027D009156CE /* APHomeTableData.h */,
-				D456A91215A6027D009156CE /* APHomeTableData.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -755,11 +749,10 @@
 				D4811B9915A39A7D00A82E56 /* APApp.m in Sources */,
 				D4811BA215A3A01A00A82E56 /* NSString+EasyIcon.m in Sources */,
 				D4811BA515A3C04D00A82E56 /* APFavorites.m in Sources */,
-				D4811BB015A3D3D700A82E56 /* Constants.h in Sources */,
 				D456A90F15A5F97C009156CE /* SVPullToRefresh.m in Sources */,
-				D456A91315A6027D009156CE /* APHomeTableData.m in Sources */,
 				D456A91A15A62396009156CE /* APHomeDefaultContentView.m in Sources */,
 				D456A91D15A67FD5009156CE /* APHomeAppSectionCell.m in Sources */,
+				D456A93715A7D7C3009156CE /* RateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,7 +760,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4811B9015A3927F00A82E56 /* RateView.m in Sources */,
 				D4811B9F15A39FA700A82E56 /* NSNumber+Currency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

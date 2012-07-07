@@ -41,8 +41,6 @@
 {
   [super viewDidLoad];
   
-  [APChild test];
-  
   // Set up child selector popover
   APChildSelectorViewController *content = [self.storyboard 
                                             instantiateViewControllerWithIdentifier:@"ChildSelectorView"];

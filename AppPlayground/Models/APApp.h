@@ -18,4 +18,9 @@
 
 - (BOOL)isFavorited;
 
+
+#ifdef DEBUG
++ (NSArray *)getSampleApps;
+#endif
+
 @end

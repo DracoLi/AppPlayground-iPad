@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "APChild.h"
 #import "APApp.h"
-#import "APAppIconView.h"
+#import "APHomeAppSectionCell.h"
 
 @interface APHomeContentViewController ()
 - (void)currentChildChanged:(NSNotification *)notification;
@@ -20,7 +20,6 @@
 @implementation APHomeContentViewController
 @synthesize tableView = _tableView;
 @synthesize currentChild = _currentChild;
-@synthesize appData = _appData;
 
 #pragma mark - View cycle
 
@@ -28,8 +27,6 @@
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    // Custom initialization
-    _appData = [[APHomeTableData alloc] init];
   }
   return self;
 }
@@ -94,24 +91,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return [self.appData sections];
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section {
-  return [self.appData rowsForSection:section];
+  return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  APAppIconView *cell = [tableView dequeueReusableCellWithIdentifier:@"AppIconCellIdentifier"];
-  APApp *thisApp = [self.appData appForIndexPath:indexPath];
-  [cell bindApp:thisApp];
+  APHomeAppSectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppIconCellIdentifier"];
+  [cell bindApps:nil];
   return cell;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  // TODO: return custom header
-  
 }
 
 #pragma mark - Table view delegate
@@ -125,7 +116,6 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjectDictionary:(NSDictionary *)dictionary {
   
   // Store the new apps
-  self.appData.rawData = dictionary;
   
   // TODO: Handle UI updates for new apps
   

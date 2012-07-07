@@ -123,7 +123,7 @@
     // Add icon to pageview
     [pageView addSubview:oneIcon];
   }
-  return  pageView;
+  return pageView;
 }
 
 - (void)appIconViewClicked:(APAppIconView *)view app:(APApp *)app {

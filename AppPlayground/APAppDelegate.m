@@ -13,6 +13,10 @@
 #import "Constants.h"
 #import "APApp.h"
 
+@interface APAppDelegate ()
+- (void)initializeRestKit;
+@end
+
 @implementation APAppDelegate
 
 @synthesize window = _window;
@@ -34,6 +38,7 @@
 }
 
 - (void)initializeRestKit {
+  
   // Create the object manager
   RKObjectManager *objectManager = [RKObjectManager 
                                     managerWithBaseURLString:kServerBaseURLString];
@@ -44,9 +49,11 @@
   
   // Setup our object mappings
   RKObjectMapping *appMapping = [RKObjectMapping mappingForClass:[APApp class]];
-//  [appMapping mapKeyPath:@"id" toAttribute:@"userID"];
-//  [appMapping mapKeyPath:@"screen_name" toAttribute:@"screenName"];
-//  [appMapping mapAttributes:@"name", nil];
+  [appMapping mapKeyPath:@"name" toAttribute:@"name"];
+  [appMapping mapKeyPath:@"category" toAttribute:@"category"];
+  [appMapping mapKeyPath:@"pic_icon60" toAttribute:@"iconURLString"];
+  [appMapping mapKeyPath:@"amount" toAttribute:@"price"];
+  [appMapping mapKeyPath:@"total_average_rating" toAttribute:@"generalRatings"];
   [objectManager.mappingProvider setObjectMapping:appMapping forKeyPath:@"app"];
 }
 

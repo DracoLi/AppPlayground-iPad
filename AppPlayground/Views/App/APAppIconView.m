@@ -41,6 +41,7 @@
 - (id)initWithDelegate:(id<APAppIconViewDelegate>)delegate {
   self = [super init];
   if (self) {
+    _delegate = delegate;
     [self loadSubviews];
   }
   return self;
