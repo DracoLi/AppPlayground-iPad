@@ -9,6 +9,8 @@
 #import "APHomeAppSectionCell.h"
 
 #define kAppsPerPage    4
+#define kAppSectionNameKey  @"section_name"
+#define kAppSectionAppsKey  @"section_apps"
 
 @interface APHomeAppSectionCell ()
 @property (strong, nonatomic) NSMutableArray *pageViews;
@@ -22,6 +24,7 @@
 @synthesize scrollView = _scrollView;
 @synthesize apps = _apps;
 @synthesize pageViews = _pageViews;
+@synthesize delegate = _delegate;
 
 #pragma mark - View lifecycle
 
@@ -44,8 +47,11 @@
 
 #pragma mark - Custom methods
 
-- (void)bindApps:(NSArray *)apps {
-  self.apps = apps;
+- (void)bindAppSection:(NSDictionary *)appSection {
+  self.apps = [appSection objectForKey:kAppSectionAppsKey];
+  
+  // Set section title
+  self.titleLabel.text = [appSection objectForKey:kAppSectionNameKey];
   
   // Initialize our pages with null values so we can load lazily
   NSMutableArray *pages = [[NSMutableArray alloc] initWithCapacity:self.totalPages];
@@ -127,7 +133,11 @@
 }
 
 - (void)appIconViewClicked:(APAppIconView *)view app:(APApp *)app {
-  NSLog(@"App Clicked: %@", app.name);
+  NSLog(@"App Clicked in cell: %@", app.name);
+  if (self.delegate &&
+      [self.delegate respondsToSelector:@selector(APHomeAppSectionAppSelected:app:)]) {
+    [self.delegate APHomeAppSectionAppSelected:self app:app];
+  }
 }
 
 #pragma mark - ScrollView Delegate

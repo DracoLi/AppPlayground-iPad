@@ -32,6 +32,9 @@
 		D456A91D15A67FD5009156CE /* APHomeAppSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A91C15A67FD5009156CE /* APHomeAppSectionCell.m */; };
 		D456A91F15A681C9009156CE /* APHomeAppSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D456A91E15A681C8009156CE /* APHomeAppSectionCell.xib */; };
 		D456A93715A7D7C3009156CE /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B8E15A3927F00A82E56 /* RateView.m */; };
+		D456A95A15A7FC95009156CE /* APDeviceSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A95815A7FC93009156CE /* APDeviceSelectorViewController.m */; };
+		D456A95B15A7FC95009156CE /* APDeviceSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D456A95915A7FC94009156CE /* APDeviceSelectorViewController.xib */; };
+		D456A95E15A9456D009156CE /* TogglingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A95D15A9456A009156CE /* TogglingImageView.m */; };
 		D46859D315A2114C0073AC87 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */; };
 		D46859D515A2115C0073AC87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D415A2115B0073AC87 /* ImageIO.framework */; };
 		D46859D815A213020073AC87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D715A213020073AC87 /* CoreLocation.framework */; };
@@ -167,6 +170,11 @@
 		D456A91B15A67FD5009156CE /* APHomeAppSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APHomeAppSectionCell.h; sourceTree = "<group>"; };
 		D456A91C15A67FD5009156CE /* APHomeAppSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APHomeAppSectionCell.m; sourceTree = "<group>"; };
 		D456A91E15A681C8009156CE /* APHomeAppSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APHomeAppSectionCell.xib; sourceTree = "<group>"; };
+		D456A95715A7FC93009156CE /* APDeviceSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDeviceSelectorViewController.h; path = General/APDeviceSelectorViewController.h; sourceTree = "<group>"; };
+		D456A95815A7FC93009156CE /* APDeviceSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDeviceSelectorViewController.m; path = General/APDeviceSelectorViewController.m; sourceTree = "<group>"; };
+		D456A95915A7FC94009156CE /* APDeviceSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APDeviceSelectorViewController.xib; path = General/APDeviceSelectorViewController.xib; sourceTree = "<group>"; };
+		D456A95C15A94566009156CE /* TogglingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TogglingImageView.h; sourceTree = "<group>"; };
+		D456A95D15A9456A009156CE /* TogglingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TogglingImageView.m; sourceTree = "<group>"; };
 		D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = Frameworks/SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		D46859D415A2115B0073AC87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D46859D715A213020073AC87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -462,6 +470,11 @@
 				D4685A2415A2402E0073AC87 /* NavigationStoryboard.storyboard */,
 				D4811B7315A3762500A82E56 /* APChildCell.h */,
 				D4811B7415A3762500A82E56 /* APChildCell.m */,
+				D456A95C15A94566009156CE /* TogglingImageView.h */,
+				D456A95D15A9456A009156CE /* TogglingImageView.m */,
+				D456A95715A7FC93009156CE /* APDeviceSelectorViewController.h */,
+				D456A95815A7FC93009156CE /* APDeviceSelectorViewController.m */,
+				D456A95915A7FC94009156CE /* APDeviceSelectorViewController.xib */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -704,6 +717,7 @@
 				D4811B9615A395A100A82E56 /* starhighlighted.png in Resources */,
 				D4811BAA15A3CC3F00A82E56 /* sample-apps.plist in Resources */,
 				D456A91F15A681C9009156CE /* APHomeAppSectionCell.xib in Resources */,
+				D456A95B15A7FC95009156CE /* APDeviceSelectorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +767,8 @@
 				D456A91A15A62396009156CE /* APHomeDefaultContentView.m in Sources */,
 				D456A91D15A67FD5009156CE /* APHomeAppSectionCell.m in Sources */,
 				D456A93715A7D7C3009156CE /* RateView.m in Sources */,
+				D456A95A15A7FC95009156CE /* APDeviceSelectorViewController.m in Sources */,
+				D456A95E15A9456D009156CE /* TogglingImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,23 +13,18 @@
 #import "APApp.h"
 #import "APHomeAppSectionCell.h"
 
+#define kAppSectionNameKey  @"section_name"
+#define kAppSectionAppsKey  @"section_apps"
+
 @interface APHomeContentViewController ()
 - (void)currentChildChanged:(NSNotification *)notification;
 @end
 
 @implementation APHomeContentViewController
 @synthesize tableView = _tableView;
-@synthesize currentChild = _currentChild;
+@synthesize appsData = _appsData;
 
 #pragma mark - View cycle
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-  }
-  return self;
-}
 
 - (void)viewDidLoad
 {
@@ -86,6 +81,10 @@
    loadObjectsAtResourcePath:resourcesPath usingBlock:^(RKObjectLoader *loader) {
      loader.delegate = self;
   }];
+  
+  NSLog(@"update view for current child");
+  self.appsData = [APApp getSampleApps];
+  [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -96,12 +95,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section {
-  return 1;
+  return self.appsData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   APHomeAppSectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppIconCellIdentifier"];
-  [cell bindApps:nil];
+  [cell bindAppSection:[self.appsData objectAtIndex:indexPath.row]];
   return cell;
 }
 
@@ -117,6 +116,7 @@
   
   // Store the new apps
   
+  
   // TODO: Handle UI updates for new apps
   
   [self.tableView reloadData];
@@ -128,6 +128,11 @@
   // TODO: Handle failure UI updates
 }
 
+#pragma mark - APHomeAppSectionCellDelegate
+
+- (void)APHomeAppSectionAppSelected:(APHomeAppSectionCell *)cell app:(APApp *)app {
+  NSLog(@"Home view got an app called %@", app.name);
+}
 
 #pragma mark - Others
 

@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
-#import "APChild.h"
+#import "APHomeAppSectionCell.h"
 
 @interface APHomeContentViewController : UIViewController
-<UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
+<UITableViewDelegate, UITableViewDataSource, 
+RKObjectLoaderDelegate, APHomeAppSectionCellDelegate>
 
-@property (strong, nonatomic) APChild           *currentChild;
 @property (strong, nonatomic) UITableView       *tableView;
+@property (strong, nonatomic) NSArray           *appsData;
 
 // Update the whole view to reflect new child
 - (void)updateViewForCurrentChild;
