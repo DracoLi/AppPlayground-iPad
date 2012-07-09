@@ -1,9 +1,9 @@
 //
-//  TogglingImageView.m
-//  SoundBoard
+//  TogglingImageView.h
+//  AppPlayground
 //
-//  Created by Draco Li on 10-11-03.
-//  Copyright 2010 Queen's University. All rights reserved.
+//  Created by Draco Li on 12-07-07.
+//  Copyright (c) 2012 Draken Solutions. All rights reserved.
 //
 
 #import "TogglingImageView.h"
@@ -45,7 +45,9 @@
   if (self.isOn) {
 		self.highlighted = NO;
 		self.isOn = NO;
-	}
+	}else {
+    self.isOn = YES;
+  }
   if (self.delegate && 
       [self.delegate respondsToSelector:@selector(togglingImageViewSelected:)]) {
 		[self.delegate togglingImageViewSelected:self];

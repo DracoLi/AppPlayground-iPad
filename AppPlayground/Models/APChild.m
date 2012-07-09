@@ -65,11 +65,11 @@
 }
 
 - (NSDictionary *)queryDictionary {
-  return [[NSDictionary alloc] initWithObjectsAndKeys: 
-          self.name, @"name", 
-          self.interests, @"interests", 
-          self.age , @"age", 
-          nil];
+  NSDictionary *results = [[NSMutableDictionary alloc] init];
+  [results setValue:self.name forKey:@"name"];
+  [results setValue:self.interests forKey:@"interests"];
+  [results setValue:[NSNumber numberWithInt:self.age] forKey:@"age"];
+  return results;
 }
 
 #pragma mark - Class methods

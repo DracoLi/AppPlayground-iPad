@@ -12,6 +12,7 @@
 #import "Flurry.h"
 #import "Constants.h"
 #import "APApp.h"
+#import "APServerHomeSection.h"
 
 @interface APAppDelegate ()
 - (void)initializeRestKit;
@@ -21,7 +22,8 @@
 
 @synthesize window = _window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application 
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   // Set up Parse
   [Parse setApplicationId:@"zGpyB8K1a5lPFg3iY01c0eD3gK6ZYOYCvrliOd8k"
@@ -54,7 +56,12 @@
   [appMapping mapKeyPath:@"pic_icon60" toAttribute:@"iconURLString"];
   [appMapping mapKeyPath:@"amount" toAttribute:@"price"];
   [appMapping mapKeyPath:@"total_average_rating" toAttribute:@"generalRatings"];
-  [objectManager.mappingProvider setObjectMapping:appMapping forKeyPath:@"app"];
+  [objectManager.mappingProvider setObjectMapping:appMapping forKeyPath:@"apps"];
+  
+  RKObjectMapping *sectionData = [RKObjectMapping mappingForClass:[APServerHomeSection class]];
+  [sectionData mapKeyPath:@"name" toAttribute:@"name"];
+  [sectionData mapRelationship:@"apps" withMapping:appMapping];
+  [objectManager.mappingProvider setObjectMapping:sectionData forKeyPath:@"home_data"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

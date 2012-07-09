@@ -13,14 +13,15 @@
 @property (copy, nonatomic)   NSString *name;
 @property (copy, nonatomic)   NSString *category;
 @property (copy, nonatomic)   NSString *iconURLString;
-@property (strong, nonatomic) NSNumber *price;
-@property (strong, nonatomic) NSNumber *generalRatings;
+@property (copy, nonatomic)   NSNumber *price;
+@property (copy, nonatomic)   NSNumber *generalRatings;
 
 - (BOOL)isFavorited;
 
-
 #ifdef DEBUG
-+ (NSArray *)getSampleApps;
++ (NSArray *)sampleApps;
 #endif
+
++ (NSArray *)parseAppsDictionary:(NSArray *)appsData;
 
 @end

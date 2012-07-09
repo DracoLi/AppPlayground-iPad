@@ -86,6 +86,7 @@
 - (void)bindApp:(APApp *)app {
   if (app) {
     self.appNameLabel.text = app.name;
+    
     self.appPriceLabel.text = [app.price getPrice];
     self.categoryLabel.text = app.category;
     self.categoryImageView.image = [app.category getImageIcon];

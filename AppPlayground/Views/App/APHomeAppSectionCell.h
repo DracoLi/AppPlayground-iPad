@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "APAppIconView.h"
 #import "APApp.h"
+#import "APServerHomeSection.h"
 
 @class APHomeAppSectionCell;
 @protocol APHomeAppSectionCellDelegate <NSObject>
@@ -24,7 +25,7 @@
 @property (copy, nonatomic) NSArray *apps;
 @property (weak, nonatomic) id<APHomeAppSectionCellDelegate> delegate;
 
-- (void)bindAppSection:(NSDictionary *)appSection;
+- (void)bindAppSection:(APServerHomeSection *)appSection;
 
 - (NSUInteger)totalPages;
 

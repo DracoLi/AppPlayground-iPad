@@ -43,7 +43,7 @@
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"One App\nName: %@\nCategory: %@\nPrice: %.2f", 
+  return [NSString stringWithFormat:@"Name: %@\rCategory: %@\rPrice: %.2f", 
           self.name, self.category, [self.price floatValue]];
 }
 
@@ -69,20 +69,12 @@
   return [APFavorites isAppFavorited:self];
 }
 
-#pragma mark - Debug methods
-
-+ (NSArray *)getSampleApps {
-  // Get our array of sample dictionary apps
-  NSString *path = [[NSBundle mainBundle] pathForResource:@"sample-apps" 
-                                                   ofType:@"plist"];
-  NSArray *appsData = [[NSArray alloc] initWithContentsOfFile:path];
-  
-  // Create app objects from the array of dictionaries using RestKit's helper
++ (NSArray *)parseAppsDictionary:(NSArray *)appsData {
   NSMutableArray *apps = [[NSMutableArray alloc] init];
   RKObjectMappingProvider *provider = [[RKObjectManager sharedManager] mappingProvider];
+  RKObjectMapping *appMapping = (RKObjectMapping *)[provider objectMappingForKeyPath:@"apps"];
   for (NSDictionary *appData in appsData) {
-    APApp *app = [[APApp alloc] init];
-    RKObjectMapping *appMapping = (RKObjectMapping *)[provider objectMappingForKeyPath:@"app"];
+    APApp *app = [[APApp alloc] init];    
     RKObjectMappingOperation *op = [RKObjectMappingOperation 
                                     mappingOperationFromObject:appData 
                                     toObject:app  withMapping:appMapping];
@@ -91,5 +83,16 @@
   }
   return apps;
 }
+
+#pragma mark - Debug methods
+#ifdef DEBUG
++ (NSArray *)sampleApps {
+  // Get our array of sample dictionary apps
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"sample-apps" 
+                                                   ofType:@"plist"];
+  NSArray *appsData = [[NSArray alloc] initWithContentsOfFile:path];
+  return [APApp parseAppsDictionary:appsData];
+}
+#endif
 
 @end

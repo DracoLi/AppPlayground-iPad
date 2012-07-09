@@ -9,16 +9,21 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import "APHomeAppSectionCell.h"
+#import "APDeviceSelectorViewController.h"
 
 @interface APHomeContentViewController : UIViewController
 <UITableViewDelegate, UITableViewDataSource, 
-RKObjectLoaderDelegate, APHomeAppSectionCellDelegate>
+RKObjectLoaderDelegate, APHomeAppSectionCellDelegate,
+APDeviceSelectorViewControllerDelegate>
 
-@property (strong, nonatomic) UITableView       *tableView;
-@property (strong, nonatomic) NSArray           *appsData;
+@property (copy, nonatomic)   NSArray               *appSections;
+@property (strong, nonatomic) UIPopoverController   *popover;
+@property (strong, nonatomic) IBOutlet UITableView  *tableView;
+@property (strong, nonatomic) IBOutlet UIButton     *deviceSelectorButton;
 
 // Update the whole view to reflect new child
 - (void)updateViewForCurrentChild;
+- (IBAction)deviceSelectorClicked:(UIButton *)sender;
 
 @end
 

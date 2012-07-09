@@ -12,17 +12,21 @@
 #import "APChild.h"
 #import "APApp.h"
 #import "APHomeAppSectionCell.h"
+#import "APServerHomeSection.h"
 
 #define kAppSectionNameKey  @"section_name"
 #define kAppSectionAppsKey  @"section_apps"
 
 @interface APHomeContentViewController ()
 - (void)currentChildChanged:(NSNotification *)notification;
+- (void)printCurrentSections;
 @end
 
 @implementation APHomeContentViewController
 @synthesize tableView = _tableView;
-@synthesize appsData = _appsData;
+@synthesize appSections = _appSections;
+@synthesize deviceSelectorButton = _deviceSelectorButton;
+@synthesize popover = _popover;
 
 #pragma mark - View cycle
 
@@ -36,6 +40,14 @@
                                                name:kCurrentChildNotification
                                              object:nil];
   
+  // Initilize our device selector
+  APDeviceSelectorViewController *deviceSelector = 
+    [[UIStoryboard storyboardWithName:@"NavigationStoryboard" bundle:nil] 
+     instantiateViewControllerWithIdentifier:@"DeviceSelectorViewIdentifier"];
+  self.popover = [[UIPopoverController alloc] 
+             initWithContentViewController:deviceSelector];
+  deviceSelector.delegate = self;
+  
   // TODO: customzie refresh view according to UI
   // self.tableView.pullToRefreshView.arrowColor = [UIColor whiteColor];
   
@@ -46,14 +58,15 @@
   }];
   
   // Register our tableview with our custom app cells
-  [self.tableView registerNib:[UINib nibWithNibName:@"APAppIconCell" bundle:nil]
-       forCellReuseIdentifier:@"AppIconCellIdentifier"];
+  [self.tableView registerNib:[UINib nibWithNibName:@"APHomeAppSectionCell" bundle:nil]
+       forCellReuseIdentifier:@"APHomeAppSectionCellIdentifier"];
   
   // Populates our home view
   [self updateViewForCurrentChild];
 }
 
 - (void)viewDidUnload {
+  [self setDeviceSelectorButton:nil];
   [super viewDidUnload];
 }
 
@@ -71,20 +84,34 @@
 
 - (void)updateViewForCurrentChild {
   
-  APChild *currentChild = [APChild getCurrentChild];
+  // APChild *currentChild = [APChild getCurrentChild];
   
   // Get new data for this child from server
   // UI updates are handled in the delegate that receives the apps
-  NSString *resourcesPath = [@"/home" stringByAppendingQueryParameters:
-                             [currentChild queryDictionary]];
-  [[RKObjectManager sharedManager] 
-   loadObjectsAtResourcePath:resourcesPath usingBlock:^(RKObjectLoader *loader) {
-     loader.delegate = self;
-  }];
+//  NSString *resourcesPath = [@"/home" stringByAppendingQueryParameters:
+//                             [currentChild queryDictionary]];
+//  [[RKObjectManager sharedManager] 
+//   loadObjectsAtResourcePath:resourcesPath usingBlock:^(RKObjectLoader *loader) {
+//     loader.targetObject = nil;
+//     loader.delegate = self;
+//  }];
   
   NSLog(@"update view for current child");
-  self.appsData = [APApp getSampleApps];
+  self.appSections = [APServerHomeSection sampleSections];
   [self.tableView reloadData];
+}
+
+- (IBAction)deviceSelectorClicked:(UIButton *)sender {
+  [self.popover presentPopoverFromRect:sender.frame inView:self.view 
+              permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (void)printCurrentSections {
+  for (APServerHomeSection *section in self.appSections) {
+    NSLog(@"section name: %@", section.name);
+    NSLog(@"section apps: %@", section.apps);
+    NSLog(@"-------------");
+  }
 }
 
 #pragma mark - Table view data source
@@ -95,12 +122,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section {
-  return self.appsData.count;
+  return self.appSections.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  APHomeAppSectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppIconCellIdentifier"];
-  [cell bindAppSection:[self.appsData objectAtIndex:indexPath.row]];
+  APHomeAppSectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"APHomeAppSectionCellIdentifier"];
+  [cell bindAppSection:[self.appSections objectAtIndex:indexPath.row]];
   return cell;
 }
 
@@ -112,26 +139,40 @@
 
 #pragma mark - Server Response Delegate
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjectDictionary:(NSDictionary *)dictionary {
+- (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
   
-  // Store the new apps
-  
-  
-  // TODO: Handle UI updates for new apps
-  
+  // Handle errors retreiving from the server
+  // TODO: alert user of error through UI
+  NSError *error;
+  NSDictionary *responseDic = [response parsedBody:&error];
+  if (error) {
+    NSLog(@"Error loading response: %@", [error localizedDescription]);
+  }
+  if ([responseDic valueForKey:@"success"] == false) {
+    NSLog(@"Error retreiving from server: %@", [responseDic valueForKey:@"message"]);
+  }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)object {
+  self.appSections = object;
   [self.tableView reloadData];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-  
-  NSLog(@"error getting home apps: %@", [error localizedDescription]);
-  // TODO: Handle failure UI updates
+  // TODO: Alert user of error through UI
+  NSLog(@"Error: %@", [error description]);
 }
 
 #pragma mark - APHomeAppSectionCellDelegate
 
 - (void)APHomeAppSectionAppSelected:(APHomeAppSectionCell *)cell app:(APApp *)app {
-  NSLog(@"Home view got an app called %@", app.name);
+  NSLog(@"User selected an app called %@", app.name);
+}
+
+#pragma mark - APDeviceSelectorDelegate
+
+- (void)apDeviceSelectorDeviceChanged:(NSString *)device {
+  [self.deviceSelectorButton setTitle:device forState:UIControlStateNormal];
 }
 
 #pragma mark - Others

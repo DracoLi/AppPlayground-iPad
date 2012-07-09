@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "APChild.h"
 #import "APChildSelectorViewController.h"
+#import "APHomeContentViewController.h"
 
 @interface APGlobalNavigationViewController : UIViewController 
 <UIPopoverControllerDelegate, APChildSelectorDelegate>
@@ -23,7 +24,7 @@
 @property (strong, nonatomic) UIPopoverController *childSelectorPopover;
 
 // Content views
-@property (strong, nonatomic) UIViewController *homeViewController;
+@property (strong, nonatomic) APHomeContentViewController *homeViewController;
 @property (strong, nonatomic) UIViewController *recommendedViewController;
 @property (strong, nonatomic) UIViewController *filtersViewController;
 @property (strong, nonatomic) UIViewController *wishListViewController;

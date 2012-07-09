@@ -62,6 +62,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="homeButtonClicked:" destination="kOM-8w-XCo" eventType="touchUpInside" id="jeX-aq-T41"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gPa-QH-cwJ">
                                                 <rect key="frame" x="27" y="120" width="90" height="90"/>
@@ -133,8 +136,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="childButton" destination="h6A-Ra-dC9" id="j4Y-1n-gbc"/>
+                        <outlet property="contentView" destination="TCw-qW-l3B" id="3Um-jU-0BI"/>
+                        <outlet property="sidebarView" destination="U5L-Fk-ZBS" id="yS7-Iz-U3A"/>
                     </connections>
                 </viewController>
             </objects>
@@ -146,7 +153,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PfV-ev-bHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="ChildSelectorView" id="f6W-Af-sqg" customClass="APChildSelectorViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uLe-72-RCo">
-                        <rect key="frame" x="0.0" y="20" width="300" height="350"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -175,18 +182,78 @@
                             <outlet property="delegate" destination="f6W-Af-sqg" id="0ai-Cc-xQw"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="634" y="124"/>
         </scene>
+        <!--Device Selector View Controller-->
+        <scene sceneID="Ms1-vD-KqR">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Eb-K4-4xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="DeviceSelectorViewIdentifier" id="BJV-Sr-jif" customClass="APDeviceSelectorViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ldR-uj-NrT">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView tag="1" contentMode="scaleToFill" image="iphone-norml.png" highlightedImage="iphone-selected.png" id="xo1-UE-9iH" customClass="TogglingImageView">
+                                <rect key="frame" x="19" y="10" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView tag="2" contentMode="scaleToFill" image="ipad-norml.png" highlightedImage="ipad-selected.png" id="5OG-lb-o5j" customClass="TogglingImageView">
+                                <rect key="frame" x="110" y="10" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <imageView tag="3" contentMode="scaleToFill" image="iphone-norml.png" highlightedImage="iphone-selected.png" id="4J7-o2-dVD" customClass="TogglingImageView">
+                                <rect key="frame" x="205" y="10" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="allButton" destination="4J7-o2-dVD" id="Pdh-PQ-SK6"/>
+                        <outlet property="ipadButton" destination="5OG-lb-o5j" id="Dho-Ny-7Su"/>
+                        <outlet property="iphoneButton" destination="xo1-UE-9iH" id="EKQ-qG-K1X"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="503" y="603"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="ipad-norml.png" width="80" height="75"/>
+        <image name="ipad-selected.png" width="80" height="75"/>
+        <image name="iphone-norml.png" width="80" height="75"/>
+        <image name="iphone-selected.png" width="80" height="75"/>
+    </resources>
     <classes>
         <class className="APChildCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/APChildCell.h"/>
         </class>
         <class className="APChildSelectorViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/APChildSelectorViewController.h"/>
+        </class>
+        <class className="APDeviceSelectorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/APDeviceSelectorViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="allButton" candidateClass="TogglingImageView"/>
+                <relationship kind="outlet" name="ipadButton" candidateClass="TogglingImageView"/>
+                <relationship kind="outlet" name="iphoneButton" candidateClass="TogglingImageView"/>
+            </relationships>
         </class>
         <class className="APGlobalNavigationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/APGlobalNavigationViewController.h"/>
@@ -200,6 +267,9 @@
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="sidebarView" candidateClass="UIView"/>
             </relationships>
+        </class>
+        <class className="TogglingImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TogglingImageView.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -10,7 +10,7 @@
 #import "Constants.h"
 
 @interface APGlobalNavigationViewController ()
-
+- (CGRect)makeFrameForContentView;
 @end
 
 @implementation APGlobalNavigationViewController
@@ -93,7 +93,19 @@
 #pragma mark - Showing Views
 
 - (void)showHomeView:(BOOL)shouldShow animated:(BOOL)animated {
-  
+  if (shouldShow) {
+    if (self.homeViewController == nil) {
+      self.homeViewController = [[UIStoryboard storyboardWithName:@"HomeContentStoryboard" 
+                                                           bundle:nil] 
+                                 instantiateInitialViewController];
+    }
+    self.homeViewController.view.frame = [self makeFrameForContentView];
+    [self.contentView addSubview:self.homeViewController.view];
+  }else {
+    if (self.homeViewController != nil) {
+      self.contentView = nil;
+    }
+  }
 }
 
 - (void)showRecommendationsView:(BOOL)shouldShow animated:(BOOL)animated {
@@ -106,6 +118,15 @@
 
 - (void)showWishList:(BOOL)shouldShow animated:(BOOL)animated {
   
+}
+
+#pragma mark - Private methods
+
+- (CGRect)makeFrameForContentView {
+  CGRect results = self.contentView.frame;
+  results.origin.x = 0;
+  results.origin.y = 0;
+  return results;
 }
 
 #pragma mark - Sidebar utils

@@ -9,8 +9,6 @@
 #import "APHomeAppSectionCell.h"
 
 #define kAppsPerPage    4
-#define kAppSectionNameKey  @"section_name"
-#define kAppSectionAppsKey  @"section_apps"
 
 @interface APHomeAppSectionCell ()
 @property (strong, nonatomic) NSMutableArray *pageViews;
@@ -47,19 +45,22 @@
 
 #pragma mark - Custom methods
 
-- (void)bindAppSection:(NSDictionary *)appSection {
-  self.apps = [appSection objectForKey:kAppSectionAppsKey];
+- (void)bindAppSection:(APServerHomeSection *)appSection {
+  self.apps = appSection.apps;
   
   // Set section title
-  self.titleLabel.text = [appSection objectForKey:kAppSectionNameKey];
+  self.titleLabel.text = appSection.name;
   
   // Initialize our pages with null values so we can load lazily
-  NSMutableArray *pages = [[NSMutableArray alloc] initWithCapacity:self.totalPages];
+  self.pageViews = [[NSMutableArray alloc] initWithCapacity:self.totalPages];
   for (unsigned i = 0; i < self.totalPages; i++) {
     [self.pageViews addObject:[NSNull null]];
   }
-  self.pageViews = pages;
-    
+  
+  // Initialize our scroll view's contentsize
+  self.scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * self.totalPages, 
+                                           _scrollView.frame.size.height);
+  
   // Load the first page and the second page so no flickering
   [self loadScrollViewForPage:0];
   [self loadScrollViewForPage:1];
@@ -69,7 +70,8 @@
 }
 
 - (NSUInteger)totalPages {
-  return ceil([self.apps count] / kAppsPerPage);
+  float pages = (float)self.apps.count / kAppsPerPage;
+  return ceil(pages);
 }
 
 - (void)scrollToPage:(NSUInteger)page animated:(BOOL)animated {
@@ -94,13 +96,14 @@
   }
   
   // Lazily create the scroll view's content if neccessary
+  NSLog(@"total pages = %d", self.pageViews.count);
   UIView *pageView = [self.pageViews objectAtIndex:page];
   if ((NSNull *)pageView == [NSNull null]) {
     pageView = [self makeViewForPage:page];
     [self.pageViews replaceObjectAtIndex:page withObject:pageView];
   }
   
-  // Add the page view to the scroll view
+  // Add the page view to the scroll view if not already
   if (pageView.superview == nil) {
     CGRect frame = self.scrollView.frame;
     frame.origin.x = frame.size.width * page;
@@ -114,7 +117,9 @@
   CGRect pageFrame = self.scrollView.frame;
   pageFrame.origin.x = 0; pageFrame.origin.y = 0;
   UIView *pageView = [[UIView alloc] initWithFrame:pageFrame];
-  for (unsigned i = 0; i < kAppsPerPage; i++) {
+  int baseIndex = page * kAppsPerPage;
+  int maxIndex = MIN(self.apps.count, self.apps.count + kAppsPerPage);
+  for (unsigned i = baseIndex; i < maxIndex; i++) {
     APAppIconView *oneIcon = [[APAppIconView alloc] initWithDelegate:self];
     
     // Adjust icon frame
@@ -124,7 +129,7 @@
     oneIcon.frame = iconFrame;
     
     // Bind data to icon
-    [oneIcon bindApp:[self.apps objectAtIndex:page + i]];
+    [oneIcon bindApp:[self.apps objectAtIndex:i]];
     
     // Add icon to pageview
     [pageView addSubview:oneIcon];
