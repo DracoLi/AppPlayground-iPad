@@ -13,9 +13,9 @@
 #import "APFavorites.h"
 
 @interface APAppIconView ()
-- (void)handleTap:(UITapGestureRecognizer *)sender;
-- (void)loadSubviews;
 @end
+
+#define kAppIconPlaceHolderImage  @"appIcon-placeholder.png"
 
 @implementation APAppIconView
 @synthesize app = _app;
@@ -28,70 +28,21 @@
 @synthesize categoryImageView = _categoryImageView;
 @synthesize categoryLabel = _categoryLabel;
 
-#define PlaceHolderImage  @"appIcon-placeholder.png"
-
-- (id)init {
-  self = [super init];
-  if (self) {
-    [self loadSubviews];
-  }
-  return self;
-}
-
-- (id)initWithDelegate:(id<APAppIconViewDelegate>)delegate {
-  self = [super init];
-  if (self) {
-    _delegate = delegate;
-    [self loadSubviews];
-  }
-  return self;
-}
-
-- (void)loadSubviews {
-  // Set up all subviews
-  self.iconImageView = [[UIImageView alloc] 
-                        initWithFrame:CGRectMake(9, 13, 83, 74)];
-  self.appNameLabel = [[UILabel alloc] 
-                       initWithFrame:CGRectMake(111, 9, 107, 21)];
-  self.appPriceLabel = [[UILabel alloc] 
-                        initWithFrame:CGRectMake(140, 31, 73, 21)];
-  self.ratingsView = [[RateView alloc] initWithFrame:CGRectMake(111, 57, 100, 31)];
-  self.favButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-  self.favButton.frame = CGRectMake(3, 3, 32, 37);
-  UILabel *favLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 11, 43, 21)];
-  favLabel.text = @"Fav It!";
-  self.categoryImageView = [[UIImageView alloc] initWithFrame:
-                            CGRectMake(6, 7, 35, 30)];
-  UILabel *categoryLabel = [[UILabel alloc] 
-                            initWithFrame:CGRectMake(52, 10, 42, 21)];
-  
-  // Add all subviews
-  [self addSubview:self.iconImageView];
-  [self addSubview:self.appNameLabel];
-  [self addSubview:self.appPriceLabel];
-  [self addSubview:self.ratingsView];
-  [self addSubview:self.favButton];
-  [self addSubview:self.categoryImageView];
-  [self addSubview:favLabel];
-  [self addSubview:categoryLabel];
-  
-  // Add tap recognizer to the view
-  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped)];
-  tap.numberOfTapsRequired = 1;
-  tap.numberOfTouchesRequired = 1;
-  [self addSubview:tap.view];
-  [self sendSubviewToBack:tap.view]; 
+- (void)awakeFromNib {
+  self.ratingsView.rating = 0;
+  self.ratingsView.editable = NO;
+  self.ratingsView.maxRating = 5;
 }
 
 - (void)bindApp:(APApp *)app {
+  self.app = app;
   if (app) {
     self.appNameLabel.text = app.name;
-    
     self.appPriceLabel.text = [app.price getPrice];
     self.categoryLabel.text = app.category;
     self.categoryImageView.image = [app.category getImageIcon];
     [self.iconImageView setImageWithURL:[NSURL URLWithString:app.iconURLString]
-                       placeholderImage:[UIImage imageNamed:PlaceHolderImage]
+                       placeholderImage:[UIImage imageNamed:kAppIconPlaceHolderImage]
                                 success:nil 
                                 failure:^(NSError *error) {
                                   NSLog(@"image loading error: %@", error.description);
@@ -108,21 +59,41 @@
   self.appPriceLabel.text = nil;
   self.categoryLabel.text = nil;
   self.categoryImageView.image = nil;
-  self.iconImageView.image = [UIImage imageNamed:PlaceHolderImage];
+  self.iconImageView.image = [UIImage imageNamed:kAppIconPlaceHolderImage];
   self.ratingsView.rating = 0;
   self.favButton.selected = NO;
 }
 
 - (IBAction)favButtonClicked:(UIButton *)sender {
   [APFavorites toggleFavoriteStatus:self.app];
+  self.favButton.selected = [self.app isFavorited];
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)sender {
+- (IBAction)priceButtonClicked:(UIButton *)sender {
+  if (self.delegate &&
+      [self.delegate respondsToSelector:@selector(appPriceButtonClicked:app:)]) {
+    [self.delegate appPriceButtonClicked:self app:self.app];
+  }
+}
+
+#pragma mark - UIGestureRecognizer
+
+- (IBAction)handleTap:(UITapGestureRecognizer *)sender {
   // Tell delegate an app is pressed and pass back the app
   if (self.delegate && 
       [self.delegate respondsToSelector:@selector(appIconViewClicked:app:)]) {
     [self.delegate appIconViewClicked:self app:self.app];
   }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer 
+       shouldReceiveTouch:(UITouch *)touch {
+  if (self.favButton.superview != nil) {
+    if ([touch.view isKindOfClass:[UIButton class]]) {
+      return NO;
+    }
+  }
+  return YES;
 }
 
 @end

@@ -9,7 +9,7 @@
 #import "APDeviceSelectorViewController.h"
 
 @interface APDeviceSelectorViewController ()
-- (void)adjustToggleButtonsForSelected:(TogglingImageView *)button;
+- (void)adjustToggleButtonsForSelected:(UIButton *)button;
 @end
 
 @implementation APDeviceSelectorViewController
@@ -22,14 +22,8 @@
 {
   [super viewDidLoad];
   
-  // Delegation
-  self.ipadButton.delegate = self;
-  self.iphoneButton.delegate = self;
-  self.allButton.delegate = self;
-  
   // By default iphone button is on
-  [self.iphoneButton toggleOn];
-  [self togglingImageViewSelected:nil];
+  self.iphoneButton.selected = true;
 }
 
 - (void)viewDidUnload
@@ -41,23 +35,19 @@
 }
 
 - (NSString *)getSelectedDevice {
-  if (self.allButton.isOn) {
+  if (self.allButton.selected) {
     return @"All";
-  }else if (self.ipadButton.isOn) {
+  }else if (self.ipadButton.selected) {
     return @"iPad";
-  }else if(self.iphoneButton.isOn) {
+  }else if(self.iphoneButton.selected) {
     return @"iPhone";
   }
   NSAssert(1 == 0, @"We should never get here");
-  return @"unkown";
+  return @"unknown";
 }
 
-- (void)togglingImageViewSelected:(TogglingImageView *)theIcon {
-  if (!theIcon.isOn) {
-    [theIcon toggleOn];
-  }else {
-    [self adjustToggleButtonsForSelected:theIcon];
-  }
+- (IBAction)deviceButtonsClicked:(UIButton *)button {
+  [self adjustToggleButtonsForSelected:button];
   
   if (self.delegate && 
       [self.delegate respondsToSelector:@selector(apDeviceSelectorDeviceChanged:)]) {
@@ -65,21 +55,10 @@
   }
 }
 
-- (void)adjustToggleButtonsForSelected:(TogglingImageView *)button {
-  if (button == self.iphoneButton)
-    [self.iphoneButton toggleOn];
-  else 
-    [self.iphoneButton toggleOff];
-  
-  if (button == self.ipadButton)
-    [self.ipadButton toggleOn];
-  else 
-    [self.ipadButton toggleOff];
-  
-  if (button == self.allButton)
-    [self.allButton toggleOn];
-  else 
-    [self.allButton toggleOff];
+- (void)adjustToggleButtonsForSelected:(UIButton *)button {
+  self.iphoneButton.selected = button == self.iphoneButton;
+  self.ipadButton.selected = button == self.ipadButton;
+  self.allButton.selected = button == self.allButton;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

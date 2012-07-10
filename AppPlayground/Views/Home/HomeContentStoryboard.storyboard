@@ -80,7 +80,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/APHomeContentViewController.h"/>
             <relationships>
                 <relationship kind="action" name="deviceSelectorClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="poopClicked:"/>
                 <relationship kind="outlet" name="deviceSelectorButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="poop" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>

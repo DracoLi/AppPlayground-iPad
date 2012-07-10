@@ -7,8 +7,11 @@
 //
 
 #import "APHomeAppSectionCell.h"
+#import "UIView+CustomView.h"
 
-#define kAppsPerPage    4
+#define kAppsPerPage            3
+#define kPaddingBetweenApps     40
+#define kPaddingForFirstApp     30
 
 @interface APHomeAppSectionCell ()
 @property (strong, nonatomic) NSMutableArray *pageViews;
@@ -90,17 +93,17 @@
   [self.scrollView scrollRectToVisible:scrollTo animated:animated];
 }
 
+#pragma mark - Private custom methods
+
 - (void)loadScrollViewForPage:(NSUInteger)page {
-  if (page >= self.totalPages) {
-    return;
-  }
+  if (page >= self.totalPages) return;
   
   // Lazily create the scroll view's content if neccessary
-  NSLog(@"total pages = %d", self.pageViews.count);
   UIView *pageView = [self.pageViews objectAtIndex:page];
   if ((NSNull *)pageView == [NSNull null]) {
     pageView = [self makeViewForPage:page];
     [self.pageViews replaceObjectAtIndex:page withObject:pageView];
+    NSLog(@"page %d loaded", page);
   }
   
   // Add the page view to the scroll view if not already
@@ -114,21 +117,37 @@
 }
 
 - (UIView *)makeViewForPage:(NSUInteger)page {
+  // Create our pageview with the right frame
   CGRect pageFrame = self.scrollView.frame;
-  pageFrame.origin.x = 0; pageFrame.origin.y = 0;
+  pageFrame.origin.x = pageFrame.size.width * page; 
+  pageFrame.origin.y = 0;
   UIView *pageView = [[UIView alloc] initWithFrame:pageFrame];
+  
+  // Populate pageview with icon view
   int baseIndex = page * kAppsPerPage;
-  int maxIndex = MIN(self.apps.count, self.apps.count + kAppsPerPage);
+  int maxIndex = MIN(self.apps.count, page * kAppsPerPage + kAppsPerPage);
+  APAppIconView *lastView = nil;
   for (unsigned i = baseIndex; i < maxIndex; i++) {
-    APAppIconView *oneIcon = [[APAppIconView alloc] initWithDelegate:self];
+    APAppIconView *oneIcon = (APAppIconView *)[UIView 
+                                               viewWithNibName:@"APAppIconView" 
+                                               owner:self];
+    oneIcon.delegate = self;
     
     // Adjust icon frame
     CGRect iconFrame = oneIcon.frame;
     iconFrame.origin.y = 0;
-    iconFrame.origin.x = iconFrame.size.width * page;
-    oneIcon.frame = iconFrame;
+    if (lastView == nil) {
+      iconFrame.origin.x = kPaddingForFirstApp;
+    }else {
+      iconFrame.origin.x = lastView.frame.origin.x + kPaddingBetweenApps + 
+                           iconFrame.size.width;
+    }
     
-    // Bind data to icon
+    // Set the final frame
+    oneIcon.frame = iconFrame;
+    lastView = oneIcon;
+    
+    // Bind data to icon view
     [oneIcon bindApp:[self.apps objectAtIndex:i]];
     
     // Add icon to pageview
@@ -136,6 +155,8 @@
   }
   return pageView;
 }
+
+#pragma mark - UI Actions
 
 - (void)appIconViewClicked:(APAppIconView *)view app:(APApp *)app {
   NSLog(@"App Clicked in cell: %@", app.name);
@@ -145,17 +166,29 @@
   }
 }
 
+- (void)appPriceButtonClicked:(APAppIconView *)view app:(APApp *)app {
+  NSLog(@"App Price clicked in cell: %@", app.name);
+  if (self.delegate &&
+      [self.delegate respondsToSelector:@selector(APHomeAppSectionAppPriceClicked:app:)]) {
+    [self.delegate APHomeAppSectionAppPriceClicked:self app:app];
+  }
+}
+
 #pragma mark - ScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  // Load the surrounding pages to avoid flickering
+  // Switch the indicator when more than 50% of the previous/next page is visible
   CGFloat pageWidth = self.scrollView.frame.size.width;
   int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
   [self loadScrollViewForPage:page - 1];
   [self loadScrollViewForPage:page];
   [self loadScrollViewForPage:page + 1];
-  
-  NSLog(@"scrolled to page %d, offset.x = %f", page, self.scrollView.contentOffset.x);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+  // Update page label
+  int page = self.scrollView.contentOffset.x / self.scrollView.frame.size.width + 1;
+  self.pageLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Page %d", @"Page %d"), page];
 }
 
 @end

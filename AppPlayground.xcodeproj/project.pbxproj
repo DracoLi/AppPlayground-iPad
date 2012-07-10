@@ -42,6 +42,7 @@
 		D456A98915AA4D23009156CE /* APServerHomeSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A98715AA4D23009156CE /* APServerHomeSection.m */; };
 		D456A98B15AA6527009156CE /* home-sample-data.plist in Resources */ = {isa = PBXBuildFile; fileRef = D456A98A15AA6527009156CE /* home-sample-data.plist */; };
 		D456A99015AA7E92009156CE /* NSNumber+Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = D4811B9E15A39FA700A82E56 /* NSNumber+Currency.m */; };
+		D456A99315AA84A7009156CE /* UIView+CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D456A99215AA84A7009156CE /* UIView+CustomView.m */; };
 		D46859D315A2114C0073AC87 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859CE15A2110D0073AC87 /* libSDWebImageARC.a */; };
 		D46859D515A2115C0073AC87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D415A2115B0073AC87 /* ImageIO.framework */; };
 		D46859D815A213020073AC87 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46859D715A213020073AC87 /* CoreLocation.framework */; };
@@ -189,6 +190,8 @@
 		D456A98615AA4D23009156CE /* APServerHomeSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APServerHomeSection.h; sourceTree = "<group>"; };
 		D456A98715AA4D23009156CE /* APServerHomeSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APServerHomeSection.m; sourceTree = "<group>"; };
 		D456A98A15AA6527009156CE /* home-sample-data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "home-sample-data.plist"; sourceTree = "<group>"; };
+		D456A99115AA84A6009156CE /* UIView+CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomView.h"; sourceTree = "<group>"; };
+		D456A99215AA84A7009156CE /* UIView+CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomView.m"; sourceTree = "<group>"; };
 		D46859C215A2110D0073AC87 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = Frameworks/SDWebImage/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		D46859D415A2115B0073AC87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D46859D715A213020073AC87 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -393,6 +396,8 @@
 				D4811B9E15A39FA700A82E56 /* NSNumber+Currency.m */,
 				D4811BA015A3A01A00A82E56 /* NSString+EasyIcon.h */,
 				D4811BA115A3A01A00A82E56 /* NSString+EasyIcon.m */,
+				D456A99115AA84A6009156CE /* UIView+CustomView.h */,
+				D456A99215AA84A7009156CE /* UIView+CustomView.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -798,6 +803,7 @@
 				D456A97C15AA4C20009156CE /* APServerAppResults.m in Sources */,
 				D456A98915AA4D23009156CE /* APServerHomeSection.m in Sources */,
 				D456A99015AA7E92009156CE /* NSNumber+Currency.m in Sources */,
+				D456A99315AA84A7009156CE /* UIView+CustomView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -98,6 +98,10 @@
   
   NSLog(@"update view for current child");
   self.appSections = [APServerHomeSection sampleSections];
+  
+  // Stop refreshing
+  [self.tableView.pullToRefreshView stopAnimating];
+  
   [self.tableView reloadData];
 }
 
@@ -127,6 +131,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   APHomeAppSectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"APHomeAppSectionCellIdentifier"];
+  if (cell.delegate == nil) 
+    cell.delegate = self;
   [cell bindAppSection:[self.appSections objectAtIndex:indexPath.row]];
   return cell;
 }
@@ -167,6 +173,10 @@
 
 - (void)APHomeAppSectionAppSelected:(APHomeAppSectionCell *)cell app:(APApp *)app {
   NSLog(@"User selected an app called %@", app.name);
+}
+
+- (void)APHomeAppSectionAppPriceClicked:(APHomeAppSectionCell *)cell app:(APApp *)app {
+  NSLog(@"User selected the price of app '%@'", app.name);
 }
 
 #pragma mark - APDeviceSelectorDelegate

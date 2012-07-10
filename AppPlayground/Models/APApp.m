@@ -43,20 +43,14 @@
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Name: %@\rCategory: %@\rPrice: %.2f", 
-          self.name, self.category, [self.price floatValue]];
+  return [NSString stringWithFormat:@"Name: %@\rCategory: %@\rPrice: %.2f\rRatings:", 
+          self.name, self.category, [self.price floatValue], [self.generalRatings floatValue]];
 }
 
 - (BOOL)isEqual:(id)object {
   if ([object isKindOfClass:[APApp class]]) {
     APApp *target = (APApp *)object;
     if ([self.name isEqualToString:target.name]) {
-      
-      // If app name equals then rest should too or else something is wrong here.
-      NSAssert( ![self.category isEqualToString:target.category] ||
-                ![self.price isEqualToNumber:target.price] ||
-                ![self.generalRatings isEqualToNumber:target.generalRatings], 
-               @"Something's wrong here");
       return true;
     }
   }

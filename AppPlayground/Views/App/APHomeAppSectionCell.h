@@ -13,7 +13,9 @@
 
 @class APHomeAppSectionCell;
 @protocol APHomeAppSectionCellDelegate <NSObject>
+@optional
 - (void)APHomeAppSectionAppSelected:(APHomeAppSectionCell *)cell app:(APApp *)app;
+- (void)APHomeAppSectionAppPriceClicked:(APHomeAppSectionCell *)cell app:(APApp *)app;
 @end
 
 @interface APHomeAppSectionCell : UITableViewCell

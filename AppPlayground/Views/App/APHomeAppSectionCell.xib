@@ -80,7 +80,7 @@
 									<object class="IBUILabel" id="748841040">
 										<reference key="NSNextResponder" ref="82095849"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{12, 13}, {43, 21}}</string>
+										<string key="NSFrame">{{12, 0}, {106, 48}}</string>
 										<reference key="NSSuperview" ref="82095849"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="653880170"/>
@@ -90,7 +90,7 @@
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<string key="IBUIText">page </string>
+										<string key="IBUIText">Page 1</string>
 										<reference key="IBUITextColor" ref="814991171"/>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
@@ -120,7 +120,7 @@
 							<object class="IBUIScrollView" id="653880170">
 								<reference key="NSNextResponder" ref="398980455"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{0, 48}, {850, 182}}</string>
+								<string key="NSFrame">{{0, 48}, {850, 180}}</string>
 								<reference key="NSSuperview" ref="398980455"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -134,7 +134,7 @@
 								<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrameSize">{850, 230}</string>
+						<string key="NSFrameSize">{850, 228}</string>
 						<reference key="NSSuperview" ref="381693549"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="82095849"/>
@@ -150,7 +150,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{850, 231}</string>
+				<string key="NSFrameSize">{850, 229}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="398980455"/>
@@ -159,7 +159,7 @@
 				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="398980455"/>
 				<string key="IBUIReuseIdentifier">APHomeAppSectionCellIdentifier</string>
-				<real value="231" key="IBUIRowHeight"/>
+				<real value="229" key="IBUIRowHeight"/>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">

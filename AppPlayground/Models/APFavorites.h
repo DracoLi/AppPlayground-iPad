@@ -23,4 +23,6 @@
 // Returns the status after the toggle
 + (BOOL)toggleFavoriteStatus:(APApp *)app;
 
++ (void)clearAppFavorites;
+
 @end

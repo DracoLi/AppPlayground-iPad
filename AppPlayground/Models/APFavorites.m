@@ -25,18 +25,22 @@
   NSMutableArray *favorites = [[NSMutableArray alloc] 
                                initWithArray:[APFavorites getAllFavorites]];
   [favorites addObject:app];
-  [APPersistenceManager saveObjectToDefaults:app key:FavoritesListKey];
+  [APPersistenceManager saveObjectToDefaults:favorites key:FavoritesListKey];
 }
 
 + (void)removeFromFavorites:(APApp *)app {
   NSMutableArray *favorites = [[NSMutableArray alloc] 
                                initWithArray:[APFavorites getAllFavorites]];
   [favorites removeObject:app];
-  [APPersistenceManager saveObjectToDefaults:app key:FavoritesListKey];
+  [APPersistenceManager saveObjectToDefaults:favorites key:FavoritesListKey];
 }
 
 + (NSArray *)getAllFavorites {
-  return [APPersistenceManager getDataFromDefaults:FavoritesListKey];
+  NSArray *allFavorites = [APPersistenceManager getDataFromDefaults:FavoritesListKey];
+  if (allFavorites == nil) {
+    allFavorites = [[NSArray alloc] init];
+  }
+  return allFavorites;
 }
 
 + (BOOL)isAppFavorited:(APApp *)app {
@@ -52,6 +56,10 @@
     [APFavorites addToFavorites:app];
   }
   return !isFavorited;
+}
+
++ (void)clearAppFavorites {
+  [APPersistenceManager saveObjectToDefaults:nil key:FavoritesListKey];
 }
 
 @end

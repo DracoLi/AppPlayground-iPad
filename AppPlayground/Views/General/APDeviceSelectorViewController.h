@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TogglingImageView.h"
 
 @protocol APDeviceSelectorViewControllerDelegate <NSObject>
 - (void)apDeviceSelectorDeviceChanged:(NSString *)device;
 @end
 
 @interface APDeviceSelectorViewController : UIViewController
-<TogglingImageViewDelegate>
 
-@property (strong, nonatomic) IBOutlet TogglingImageView *iphoneButton;
-@property (strong, nonatomic) IBOutlet TogglingImageView *ipadButton;
-@property (strong, nonatomic) IBOutlet TogglingImageView *allButton;
+@property (strong, nonatomic) IBOutlet UIButton *iphoneButton;
+@property (strong, nonatomic) IBOutlet UIButton *ipadButton;
+@property (strong, nonatomic) IBOutlet UIButton *allButton;
 @property (weak, nonatomic) id<APDeviceSelectorViewControllerDelegate> delegate;
 
 - (NSString *)getSelectedDevice;
+- (IBAction)deviceButtonsClicked:(UIButton *)button;
+
 @end

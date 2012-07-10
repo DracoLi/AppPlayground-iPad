@@ -14,9 +14,11 @@
 @protocol APAppIconViewDelegate <NSObject>
 @optional
 - (void)appIconViewClicked:(APAppIconView *)view app:(APApp *)app;
+- (void)appPriceButtonClicked:(APAppIconView *)view app:(APApp *)app;
 @end
 
 @interface APAppIconView : UIView
+<UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) APApp *app;
 @property (weak, nonatomic) id<APAppIconViewDelegate> delegate;
@@ -28,12 +30,16 @@
 @property (strong, nonatomic) IBOutlet UIImageView *categoryImageView;
 @property (strong, nonatomic) IBOutlet UILabel *categoryLabel;
 
-- (id)initWithDelegate:(id<APAppIconViewDelegate>)delegate;
-
+// Display an app for the cell
 - (void)bindApp:(APApp *)app;
 
+// Clear all info for the cell
 - (void)clearAll;
 
 - (IBAction)favButtonClicked:(UIButton *)sender;
+
+- (IBAction)priceButtonClicked:(UIButton *)sender;
+
+- (IBAction)handleTap:(UITapGestureRecognizer *)sender;
 
 @end
