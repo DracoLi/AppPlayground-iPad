@@ -13,13 +13,13 @@
 @end
 
 @implementation APChild
-@synthesize childID = _childID;
 @synthesize name = _name;
 @synthesize age = _age;
 @synthesize interests = _interests;
+@synthesize favorites = _favorites;
 
 // General keys
-#define kChildrenListKey       @"ChildrenListKey"
+#define kChildrenListFileName  @"ChildrenList.plist"
 #define kCurrentChildrenKey    @"CurrentChildKey"
 
 // Child property keys
@@ -27,42 +27,41 @@
 #define kChildNameKey          @"ChildNameKey"
 #define kChildAgeKey           @"ChildAgeKey"
 #define kChildInterestsKey     @"ChildInterestsKey"
-
+#define kChildFavoritesKey     @"ChildFavoritesKey"
 
 - (id)initWithCoder:(NSCoder *)decoder {
   self = [super init];
-  if(self) {
-    _childID    = [decoder decodeIntegerForKey:kChildIDKey];
+  if (self) {
     _name       = [decoder decodeObjectForKey:kChildNameKey];
     _age        = [decoder decodeIntegerForKey:kChildAgeKey];
     _interests  = [decoder decodeObjectForKey:kChildInterestsKey];
+    _favorites  = [decoder decodeObjectForKey:kChildFavoritesKey];
   }
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-  [encoder encodeInteger:self.childID forKey:kChildIDKey];
   [encoder encodeObject:self.name forKey:kChildNameKey];
   [encoder encodeInteger:self.age forKey:kChildAgeKey];
   [encoder encodeObject:self.interests forKey:kChildInterestsKey];
+  [encoder encodeObject:self.favorites forKey:kChildFavoritesKey];
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"\nID: %d\nName: %@\nAge: %d", 
-   self.childID, self.name, self.age];
+  return [NSString stringWithFormat:@"\nName: %@\nAge: %d", self.name, self.age];
 }
 
 - (BOOL)isEqual:(id)object {
   if ([object isKindOfClass:[APChild class]]) {
     APChild *target = (APChild *)object;
-    if (self.childID == target.childID &&
-        [self.name isEqualToString:target.name] &&
-        self.age == target.age) {
+    if ([self.name isEqualToString:target.name]) {
       return true;
     }
   }
   return false;
 }
+
+#pragma mark - Custom methods
 
 - (NSDictionary *)queryDictionary {
   NSDictionary *results = [[NSMutableDictionary alloc] init];
@@ -72,47 +71,89 @@
   return results;
 }
 
-#pragma mark - Class methods
-
-+ (NSArray *)getChildren {
-  return [APPersistenceManager getDataFromDefaults:kChildrenListKey];
+- (void)save {
+  [APChild saveChild:self];
 }
 
-+ (void)addChild:(APChild *)child {
-  NSMutableArray *children = [[APChild getChildren] mutableCopy];
-  if (!children) children = [NSMutableArray array];
-  child.childID = children.count;
-  [children addObject:child];
-  [APChild setChildren:children];
+- (void)setToCurrentChild {
+  [APChild setCurrentChild:self];
+}
+
+- (void)toggleFavoriteStatusForApp:(APApp *)app {
+  // Add or remove from favorites depending on whether app is favored already
+  if ([self favorsApp:app]) {
+    [self removeFromFavorites:app];
+  }else {
+    NSLog(@"favorite before %d", self.favorites.count);
+    [self addToFavorites:app];
+    NSLog(@"favorite after %d", self.favorites.count);
+  }
+  [self save];
+}
+
+- (BOOL)favorsApp:(APApp *)app {
+  return [self.favorites containsObject:app];
+}
+
+- (void)addToFavorites:(APApp *)app {
+  if (![self favorsApp:app]) {
+    if (self.favorites == nil) {
+      self.favorites = [NSMutableArray array];
+    }
+    [self.favorites addObject:app];
+    [self save];
+  }
+}
+
+- (void)removeFromFavorites:(APApp *)app {
+  if (self.favorites && [self favorsApp:app]) {
+    [self.favorites removeObject:app];
+    [self save];
+  }
+}
+
+#pragma mark - Class methods
+
++ (NSArray *)children {
+  NSArray *results = (NSArray *)[APPersistenceManager getObjectFromFileNamed:kChildrenListFileName];
+  if (results == nil) {
+    results = [NSArray array];
+  }
+  return results;
 }
 
 + (void)setChildren:(NSArray *)children {
-  [APPersistenceManager saveObjectToDefaults:children key:kChildrenListKey];
+  if (children) {
+    [APPersistenceManager saveObject:children toFile:kChildrenListFileName];
+  }
 }
 
-+ (void)updateChildren:(APChild *)child {
-  // Get all children
-  NSMutableArray *children = [[APChild getChildren] mutableCopy];
++ (void)saveChild:(APChild *)child {
+  // Get all current children
+  NSMutableArray *children = [[APChild children] mutableCopy];
+  if (children == nil) {
+    children = [NSMutableArray array];
+  }
   
-  // Determine which child to update
-  __block APChild *childToRemove = nil;
-  [children enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL *stop) {
-    APChild *oneChild = (APChild *)obj;
-    if (oneChild.childID == child.childID) {
-      childToRemove = oneChild;
-      *stop = YES;
-      return;
-    }
-  }];
+  // Check if this child is an existing child or a new one and handle it
+  int existingIndex = [children indexOfObject:child];
+  if (existingIndex == NSNotFound) {
+    [children addObject:child];
+  }else {
+    [children replaceObjectAtIndex:existingIndex withObject:child];
+  }
   
-  // Remove old child and add new one
-  [children removeObject:childToRemove];
-  [children addObject:child];
-  
+  // Save changes to global children file
   [APChild setChildren:children];
+  
+  // Save changes to default if this is the temp chlid
+  APChild *current = [APChild currentChild];
+  if ([child isEqual:current]) {
+    [APChild setCurrentChild:child];
+  }
 }
 
-+ (APChild *)getCurrentChild {
++ (APChild *)currentChild {
   return [APPersistenceManager getDataFromDefaults:kCurrentChildrenKey];
 }
 
@@ -128,29 +169,22 @@
   one.name = @"Draco";
   one.age = 18;
   one.interests = [[NSArray alloc] initWithObjects:@"shit", @"poop", nil];
-  [APChild addChild:one];
+  [one save];
   APChild *two = [[APChild alloc] init];
   two.name = @"Sunny";
   two.age = 3;
   two.interests = [[NSArray alloc] initWithObjects:@"hoha", @"dododood", nil];
-  [APChild addChild:two];
+  [two save];
 }
 
 + (void)test {
   [APChild populateChildren];
-  NSArray *children = [APChild getChildren];
+  NSArray *children = [APChild children];
   [APChild setCurrentChild:[children objectAtIndex:0]];
   APChild *tobesaved = [children objectAtIndex:0];
-  APChild *current = [APChild getCurrentChild];
+  APChild *current = [APChild currentChild];
   NSAssert([tobesaved isEqual:current], @"must be equal child");
-  APChild *dra = [[APChild alloc] init];
-  dra.name = @"new";
-  dra.age = 10;
-  [APChild addChild:dra];
-  [APChild addChild:dra];
-  [APChild addChild:dra];
-  children = [APChild getChildren];
-  for (APChild *one in children) {
+  for (APChild *one in [APChild children]) {
     NSLog(@"%@", one);
   }
 }

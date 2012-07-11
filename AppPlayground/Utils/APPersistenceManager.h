@@ -14,11 +14,9 @@
 
 + (NSString *)getPathForFileNamed:(NSString *)filename;
 
-+ (NSString *)contentFromFileNamed:(NSString *)filename;
++ (id)getObjectFromFileNamed:(NSString *)filename;
 
-+ (void)writeToFileNamed:(NSString *)filename content:(NSString *)content;
-
-
++ (void)saveObject:(id)object toFile:(NSString *)filename;
 
 /// User defaults persistence ///
 

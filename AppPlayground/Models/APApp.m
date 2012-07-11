@@ -8,7 +8,7 @@
 
 #import "APApp.h"
 #import <RestKit/RestKit.h>
-#import "APFavorites.h"
+#import "APChild.h"
 
 @implementation APApp
 @synthesize appID = _appID;
@@ -70,8 +70,20 @@
 
 #pragma mark - Custom methods
 
-- (BOOL)isFavorited {
-  return [APFavorites isAppFavorited:self];
+- (BOOL)isFavoriteForCurrentChild {
+  return [[APChild currentChild] favorsApp:self];
+}
+
+- (void)addToFavoritesForCurrentChild {
+  [[APChild currentChild] addToFavorites:self];
+}
+
+- (void)removeFromFavoritesForCurrentChild {
+  [[APChild currentChild] removeFromFavorites:self];
+}
+
+- (void)toggleFavoriteStatusForCurrentChild {
+  [[APChild currentChild] toggleFavoriteStatusForApp:self];
 }
 
 #pragma mark - Debug methods

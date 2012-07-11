@@ -21,22 +21,17 @@
   return fullpath;
 }
 
-+ (NSString *)contentFromFileNamed:(NSString *)filename {
++ (id)getObjectFromFileNamed:(NSString *)filename {
   
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
                                                        NSUserDomainMask, YES);
   NSString *documentsDirectory = [paths objectAtIndex:0];
   NSString *fullpath = [NSString stringWithFormat:@"%@/%@", 
                         documentsDirectory, filename];
-  NSString *content = [[NSString alloc] initWithContentsOfFile:fullpath
-                                                  usedEncoding:nil
-                                                         error:nil];
-  if (content == nil) content = @"";
-  return content;
+  return [NSKeyedUnarchiver unarchiveObjectWithFile:fullpath];
 }
 
-+ (void)writeToFileNamed:(NSString *)filename content:(NSString *)content {
-  
++ (void)saveObject:(id)object toFile:(NSString *)filename {
   // Get file path
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
                                                        NSUserDomainMask, YES);
@@ -44,13 +39,13 @@
   NSString *fullpath = [NSString stringWithFormat:@"%@/%@", 
                         documentsDirectory, filename];
   
-  // write to file
-  BOOL results = [content writeToFile:fullpath 
-                           atomically:NO 
-                             encoding:NSStringEncodingConversionAllowLossy 
-                                error:nil]; 
+  // write string to file
+  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
+  BOOL result = [data writeToFile:fullpath atomically:YES];
   
-  NSAssert(results == YES, @"File must save successfully");
+  if (result == NO) {
+    NSLog(@"content have not saved successfully!!");
+  }
 }
 
 #pragma mark - User Defaults Persistence

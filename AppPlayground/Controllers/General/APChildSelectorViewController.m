@@ -34,14 +34,14 @@
   self.clearsSelectionOnViewWillAppear = NO;
   
   // Get data and current child
-  self.children = [APChild getChildren];
+  self.children = [APChild children];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   
   // Initialize selected child and select the row if first initialization
   if (self.selectedChild == nil) {
-    self.selectedChild = [APChild getCurrentChild];
+    self.selectedChild = [APChild currentChild];
     NSUInteger targetRow = [self.children indexOfObject:self.selectedChild];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:targetRow inSection:0]
                                 animated:NO

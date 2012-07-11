@@ -18,7 +18,13 @@
 @property (copy, nonatomic)   NSNumber *generalRatings;
 @property (copy, nonatomic)   NSString *country;
 
-- (BOOL)isFavorited;
+- (BOOL)isFavoriteForCurrentChild;
+
+- (void)addToFavoritesForCurrentChild;
+
+- (void)removeFromFavoritesForCurrentChild;
+
+- (void)toggleFavoriteStatusForCurrentChild;
 
 #ifdef DEBUG
 + (NSArray *)sampleApps;

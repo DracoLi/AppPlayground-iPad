@@ -48,8 +48,10 @@
   self.childSelectorPopover = [[UIPopoverController alloc] initWithContentViewController:content];
   self.childSelectorPopover.delegate = self;
   
+  [APChild test];
+  
   // Update current child
-  [self updateCurrentChild:[APChild getCurrentChild]];
+  [self updateCurrentChild:[APChild currentChild]];
 }
 
 - (void)viewDidUnload

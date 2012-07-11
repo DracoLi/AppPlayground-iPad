@@ -7,33 +7,50 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "APApp.h"
 
 @interface APChild : NSObject <NSCoding>
 
-@property (assign, nonatomic) NSUInteger childID;
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSArray *interests;
-@property (assign, nonatomic) NSUInteger age;
+@property (copy, nonatomic)   NSString          *name;
+@property (copy, nonatomic)   NSArray           *interests;
+@property (assign, nonatomic) NSUInteger        age;
+@property (strong, nonatomic) NSMutableArray    *favorites;
 
 // Returns the child information we pass for queries on the server
 - (NSDictionary *)queryDictionary;
 
+// Persist this child
+- (void)save;
 
-+ (NSArray *)getChildren;
+// Make this child the current one used by the app
+- (void)setToCurrentChild;
 
-+ (APChild *)getCurrentChild;
+// Toggle the favorite status of an app
+- (void)toggleFavoriteStatusForApp:(APApp *)app;
+
+// Quick way to determine if an app is favorited for this child
+- (BOOL)favorsApp:(APApp *)app;
+
+// These setters make sure we don't add same apps into favorites
+- (void)addToFavorites:(APApp *)app;
+- (void)removeFromFavorites:(APApp *)app;
+
+//// Global methods ////
+
+// Get all children created in the application
++ (NSArray *)children;
+
++ (APChild *)currentChild;
 
 + (void)setChildren:(NSArray *)children;
 
 + (void)setCurrentChild:(APChild *)child;
 
-+ (void)addChild:(APChild *)child;
-
-+ (void)updateChildren:(APChild *)child;
+// Saving any child, new or old
++ (void)saveChild:(APChild *)child;
 
 #ifdef DEBUG
 + (void)populateChildren;
-
 + (void)test;
 #endif
 

@@ -10,7 +10,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSNumber+Currency.h"
 #import "NSString+EasyIcon.h"
-#import "APFavorites.h"
 
 @interface APAppIconView ()
 @end
@@ -48,7 +47,7 @@
                                   NSLog(@"image loading error: %@", error.description);
                                 }];
     self.ratingsView.rating = [app.generalRatings floatValue];
-    self.favButton.selected = [app isFavorited];
+    self.favButton.selected = [app isFavoriteForCurrentChild];
   } else {
     [self clearAll];
   }
@@ -65,8 +64,8 @@
 }
 
 - (IBAction)favButtonClicked:(UIButton *)sender {
-  [APFavorites toggleFavoriteStatus:self.app];
-  self.favButton.selected = [self.app isFavorited];
+  [self.app toggleFavoriteStatusForCurrentChild];
+  self.favButton.selected = [self.app isFavoriteForCurrentChild];
 }
 
 - (IBAction)priceButtonClicked:(UIButton *)sender {

@@ -12,7 +12,6 @@
 #import "Flurry.h"
 #import "Constants.h"
 #import "APApp.h"
-#import "APFavorites.h"
 #import "APServerHomeSection.h"
 
 @interface APAppDelegate ()

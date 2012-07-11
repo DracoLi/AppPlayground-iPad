@@ -126,7 +126,7 @@
 }
 
 - (NSDictionary *)parametersForServer {
-  NSMutableDictionary *serverParms = [[[APChild getCurrentChild] queryDictionary] mutableCopy];
+  NSMutableDictionary *serverParms = [[[APChild currentChild] queryDictionary] mutableCopy];
   [serverParms setValue:[[APSettings userCountryCode] lowercaseString] 
                  forKey:@"country"];
   APDeviceSelectorViewController *deviceController = (APDeviceSelectorViewController *)
