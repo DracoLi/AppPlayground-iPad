@@ -19,7 +19,7 @@
 @interface APChildSelectorViewController : UITableViewController
 
 @property (strong, nonatomic) APChild *selectedChild;
-@property (copy, nonatomic) NSArray *children;
-@property (weak, nonatomic) id<APChildSelectorDelegate> delegate;
+@property (copy, nonatomic)   NSArray *children;
+@property (weak, nonatomic)   id<APChildSelectorDelegate> delegate;
 
 @end

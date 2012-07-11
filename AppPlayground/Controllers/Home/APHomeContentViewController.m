@@ -9,11 +9,10 @@
 #import "APHomeContentViewController.h"
 #import "SVPullToRefresh.h"
 #import "Constants.h"
-#import "APChild.h"
-#import "APApp.h"
-#import "APHomeAppSectionCell.h"
-#import "APServerHomeSection.h"
+#import "APChildManager.h"
 #import "APSettings.h"
+#import "APApp.h"
+#import "APServerHomeSection.h"
 
 #define kAppSectionNameKey  @"section_name"
 #define kAppSectionAppsKey  @"section_apps"
@@ -126,7 +125,7 @@
 }
 
 - (NSDictionary *)parametersForServer {
-  NSMutableDictionary *serverParms = [[[APChild currentChild] queryDictionary] mutableCopy];
+  NSMutableDictionary *serverParms = [[[APChildManager sharedInstance].currentChild queryDictionary] mutableCopy];
   [serverParms setValue:[[APSettings userCountryCode] lowercaseString] 
                  forKey:@"country"];
   APDeviceSelectorViewController *deviceController = (APDeviceSelectorViewController *)

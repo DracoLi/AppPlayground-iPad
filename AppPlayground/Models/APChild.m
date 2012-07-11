@@ -8,6 +8,7 @@
 
 #import "APChild.h"
 #import "APPersistenceManager.h"
+#import "APChildManager.h"
 
 @interface APChild ()
 @end
@@ -19,8 +20,6 @@
 @synthesize favorites = _favorites;
 
 // General keys
-#define kChildrenListFileName  @"ChildrenList.plist"
-#define kCurrentChildrenKey    @"CurrentChildKey"
 
 // Child property keys
 #define kChildIDKey            @"ChildIDKey"
@@ -28,6 +27,14 @@
 #define kChildAgeKey           @"ChildAgeKey"
 #define kChildInterestsKey     @"ChildInterestsKey"
 #define kChildFavoritesKey     @"ChildFavoritesKey"
+
+- (id)init {
+  self = [super init];
+  if (self) {
+    _favorites = [[NSMutableArray alloc] init];
+  }
+  return self;
+}
 
 - (id)initWithCoder:(NSCoder *)decoder {
   self = [super init];
@@ -71,12 +78,8 @@
   return results;
 }
 
-- (void)save {
-  [APChild saveChild:self];
-}
-
 - (void)setToCurrentChild {
-  [APChild setCurrentChild:self];
+  [[APChildManager sharedInstance] makeChildCurrentChild:self];
 }
 
 - (void)toggleFavoriteStatusForApp:(APApp *)app {
@@ -84,11 +87,8 @@
   if ([self favorsApp:app]) {
     [self removeFromFavorites:app];
   }else {
-    NSLog(@"favorite before %d", self.favorites.count);
     [self addToFavorites:app];
-    NSLog(@"favorite after %d", self.favorites.count);
   }
-  [self save];
 }
 
 - (BOOL)favorsApp:(APApp *)app {
@@ -96,97 +96,64 @@
 }
 
 - (void)addToFavorites:(APApp *)app {
+  if (self.favorites == nil) {
+    self.favorites = [NSMutableArray array];
+  }
   if (![self favorsApp:app]) {
-    if (self.favorites == nil) {
-      self.favorites = [NSMutableArray array];
-    }
-    [self.favorites addObject:app];
-    [self save];
+    [self.favorites addObject:app];    
+#ifdef DEBUG
+    [[APChildManager sharedInstance] saveData];
+#endif
   }
 }
 
 - (void)removeFromFavorites:(APApp *)app {
   if (self.favorites && [self favorsApp:app]) {
     [self.favorites removeObject:app];
-    [self save];
+#ifdef DEBUG
+    [[APChildManager sharedInstance] saveData];
+#endif
   }
-}
-
-#pragma mark - Class methods
-
-+ (NSArray *)children {
-  NSArray *results = (NSArray *)[APPersistenceManager getObjectFromFileNamed:kChildrenListFileName];
-  if (results == nil) {
-    results = [NSArray array];
-  }
-  return results;
-}
-
-+ (void)setChildren:(NSArray *)children {
-  if (children) {
-    [APPersistenceManager saveObject:children toFile:kChildrenListFileName];
-  }
-}
-
-+ (void)saveChild:(APChild *)child {
-  // Get all current children
-  NSMutableArray *children = [[APChild children] mutableCopy];
-  if (children == nil) {
-    children = [NSMutableArray array];
-  }
-  
-  // Check if this child is an existing child or a new one and handle it
-  int existingIndex = [children indexOfObject:child];
-  if (existingIndex == NSNotFound) {
-    [children addObject:child];
-  }else {
-    [children replaceObjectAtIndex:existingIndex withObject:child];
-  }
-  
-  // Save changes to global children file
-  [APChild setChildren:children];
-  
-  // Save changes to default if this is the temp chlid
-  APChild *current = [APChild currentChild];
-  if ([child isEqual:current]) {
-    [APChild setCurrentChild:child];
-  }
-}
-
-+ (APChild *)currentChild {
-  return [APPersistenceManager getDataFromDefaults:kCurrentChildrenKey];
-}
-
-+ (void)setCurrentChild:(APChild *)child {
-  [APPersistenceManager saveObjectToDefaults:child key:kCurrentChildrenKey];
 }
 
 #pragma mark - Debug
 
 + (void)populateChildren {
-  [APChild setChildren:[NSArray array]];
-  APChild *one = [[APChild alloc] init];
-  one.name = @"Draco";
+  APChild *one = [[APChildManager sharedInstance] createChildWithName:@"Draco"];
   one.age = 18;
   one.interests = [[NSArray alloc] initWithObjects:@"shit", @"poop", nil];
-  [one save];
-  APChild *two = [[APChild alloc] init];
-  two.name = @"Sunny";
+  APChild *two = [[APChildManager sharedInstance] createChildWithName:@"Sunny"];
   two.age = 3;
   two.interests = [[NSArray alloc] initWithObjects:@"hoha", @"dododood", nil];
-  [two save];
 }
 
 + (void)test {
   [APChild populateChildren];
-  NSArray *children = [APChild children];
-  [APChild setCurrentChild:[children objectAtIndex:0]];
-  APChild *tobesaved = [children objectAtIndex:0];
-  APChild *current = [APChild currentChild];
-  NSAssert([tobesaved isEqual:current], @"must be equal child");
-  for (APChild *one in [APChild children]) {
-    NSLog(@"%@", one);
+  NSArray *children = [[APChildManager sharedInstance] children];
+  for (APChild *child in children) {
+    NSLog(@"%@", child);
   }
+  
+  // Make a child current
+  APChild *currentChild = [children objectAtIndex:0];
+  [currentChild setToCurrentChild];
+  
+  // Change current child
+  currentChild.age = 20;
+  
+  // Make sure childmanager's current child is updated
+  NSLog(@"APChildManager's current child:");
+  NSLog(@"%@", currentChild);
+  
+  // Update another child locally
+  APChild *another = [children objectAtIndex:1];
+  another.name = @"Sunny Poop";
+  
+  // Make this child current
+  [another setToCurrentChild];
+  
+  // Get current from manager and check for info
+  NSLog(@"APChildManager's new child = %@", [[APChildManager sharedInstance] currentChild]);
 }
 
 @end

@@ -19,9 +19,6 @@
 // Returns the child information we pass for queries on the server
 - (NSDictionary *)queryDictionary;
 
-// Persist this child
-- (void)save;
-
 // Make this child the current one used by the app
 - (void)setToCurrentChild;
 
@@ -34,20 +31,6 @@
 // These setters make sure we don't add same apps into favorites
 - (void)addToFavorites:(APApp *)app;
 - (void)removeFromFavorites:(APApp *)app;
-
-//// Global methods ////
-
-// Get all children created in the application
-+ (NSArray *)children;
-
-+ (APChild *)currentChild;
-
-+ (void)setChildren:(NSArray *)children;
-
-+ (void)setCurrentChild:(APChild *)child;
-
-// Saving any child, new or old
-+ (void)saveChild:(APChild *)child;
 
 #ifdef DEBUG
 + (void)populateChildren;

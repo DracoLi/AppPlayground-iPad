@@ -18,6 +18,7 @@
 - (void)loadScrollViewForPage:(NSUInteger)page;
 - (UIView *)makeViewForPage:(NSUInteger)page;
 - (void)removeAllPageViews;
+- (void)updatePageNumberToPage:(NSUInteger)page;
 @end
 
 @implementation APHomeAppSectionCell
@@ -96,6 +97,9 @@
     scrollTo.origin.x = self.scrollView.frame.size.width * page;
   }
   [self.scrollView scrollRectToVisible:scrollTo animated:animated];
+  
+  // Update page number
+  [self updatePageNumberToPage:page];
 }
 
 #pragma mark - Private custom methods
@@ -171,6 +175,10 @@
   self.pageViews = nil;
 }
 
+- (void)updatePageNumberToPage:(NSUInteger)page {
+  self.pageLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Page %d", @"Page %d"), page + 1];
+}
+
 #pragma mark - UI Actions
 
 - (void)appIconViewClicked:(APAppIconView *)view app:(APApp *)app {
@@ -206,8 +214,8 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
   // Update page label
-  int page = self.scrollView.contentOffset.x / self.scrollView.frame.size.width + 1;
-  self.pageLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Page %d", @"Page %d"), page];
+  int page = self.scrollView.contentOffset.x / self.scrollView.frame.size.width;
+  [self updatePageNumberToPage:page];
 }
 
 @end

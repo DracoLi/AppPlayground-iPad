@@ -8,6 +8,7 @@
 
 #import "APChildSelectorViewController.h"
 #import "APChildCell.h"
+#import "APChildManager.h"
 
 @interface APChildSelectorViewController ()
 
@@ -34,14 +35,14 @@
   self.clearsSelectionOnViewWillAppear = NO;
   
   // Get data and current child
-  self.children = [APChild children];
+  self.children = [[APChildManager sharedInstance] children];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   
   // Initialize selected child and select the row if first initialization
   if (self.selectedChild == nil) {
-    self.selectedChild = [APChild currentChild];
+    self.selectedChild = [[APChildManager sharedInstance] currentChild];
     NSUInteger targetRow = [self.children indexOfObject:self.selectedChild];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:targetRow inSection:0]
                                 animated:NO

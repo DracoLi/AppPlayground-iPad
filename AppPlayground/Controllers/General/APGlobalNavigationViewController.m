@@ -8,6 +8,7 @@
 
 #import "APGlobalNavigationViewController.h"
 #import "Constants.h"
+#import "APChildManager.h"
 
 @interface APGlobalNavigationViewController ()
 - (CGRect)makeFrameForContentView;
@@ -51,7 +52,7 @@
   [APChild test];
   
   // Update current child
-  [self updateCurrentChild:[APChild currentChild]];
+  [self updateCurrentChild:[[APChildManager sharedInstance] currentChild]];
 }
 
 - (void)viewDidUnload
@@ -144,7 +145,7 @@
   [self.childButton setTitle:child.name forState:UIControlStateNormal];
   
   // Update global child
-  [APChild setCurrentChild:child];
+  [child setToCurrentChild];
   
   // Post notification that child is changed
   [[NSNotificationCenter defaultCenter] postNotificationName:kCurrentChildNotification
