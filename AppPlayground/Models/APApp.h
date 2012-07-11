@@ -10,18 +10,19 @@
 
 @interface APApp : NSObject <NSCoding>
 
+@property (copy, nonatomic)   NSNumber *appID;
 @property (copy, nonatomic)   NSString *name;
 @property (copy, nonatomic)   NSString *category;
 @property (copy, nonatomic)   NSString *iconURLString;
 @property (copy, nonatomic)   NSNumber *price;
 @property (copy, nonatomic)   NSNumber *generalRatings;
+@property (copy, nonatomic)   NSString *country;
 
 - (BOOL)isFavorited;
 
 #ifdef DEBUG
 + (NSArray *)sampleApps;
-#endif
-
 + (NSArray *)parseAppsDictionary:(NSArray *)appsData;
+#endif
 
 @end

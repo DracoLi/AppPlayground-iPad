@@ -94,16 +94,21 @@
 
 - (void)showHomeView:(BOOL)shouldShow animated:(BOOL)animated {
   if (shouldShow) {
+    // Create the home controller if nil
     if (self.homeViewController == nil) {
       self.homeViewController = [[UIStoryboard storyboardWithName:@"HomeContentStoryboard" 
                                                            bundle:nil] 
                                  instantiateInitialViewController];
     }
-    self.homeViewController.view.frame = [self makeFrameForContentView];
-    [self.contentView addSubview:self.homeViewController.view];
+    
+    // Show the home controller if not already shown
+    if (self.homeViewController.view.superview == nil) {
+      self.homeViewController.view.frame = [self makeFrameForContentView];
+      [self.contentView addSubview:self.homeViewController.view];
+    }
   }else {
     if (self.homeViewController != nil) {
-      self.contentView = nil;
+      [self.homeViewController.view removeFromSuperview];
     }
   }
 }

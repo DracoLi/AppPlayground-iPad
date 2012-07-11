@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *pageViews;
 - (void)loadScrollViewForPage:(NSUInteger)page;
 - (UIView *)makeViewForPage:(NSUInteger)page;
+- (void)removeAllPageViews;
 @end
 
 @implementation APHomeAppSectionCell
@@ -55,21 +56,25 @@
   self.titleLabel.text = appSection.name;
   
   // Initialize our pages with null values so we can load lazily
+  [self removeAllPageViews];
   self.pageViews = [[NSMutableArray alloc] initWithCapacity:self.totalPages];
   for (unsigned i = 0; i < self.totalPages; i++) {
     [self.pageViews addObject:[NSNull null]];
   }
   
-  // Initialize our scroll view's contentsize
-  self.scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * self.totalPages, 
-                                           _scrollView.frame.size.height);
-  
-  // Load the first page and the second page so no flickering
-  [self loadScrollViewForPage:0];
-  [self loadScrollViewForPage:1];
-  
-  // Make sure the first place is displayed
-  [self scrollToPage:0 animated:NO];
+  // Load pages if we have any content
+  if (self.apps.count > 0) {
+    // Initialize our scroll view's contentsize
+    self.scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * self.totalPages, 
+                                             _scrollView.frame.size.height);
+    
+    // Load the first page and the second page so no flickering
+    [self loadScrollViewForPage:0];
+    [self loadScrollViewForPage:1];
+    
+    // Make sure the first place is displayed
+    [self scrollToPage:0 animated:NO];
+  }
 }
 
 - (NSUInteger)totalPages {
@@ -156,6 +161,16 @@
   return pageView;
 }
 
+- (void)removeAllPageViews {
+  for (UIView *pageView in self.pageViews) {
+    if ((NSNull *)pageView != [NSNull null] && 
+        pageView.subviews != nil) {
+      [pageView removeFromSuperview];
+    }
+  }
+  self.pageViews = nil;
+}
+
 #pragma mark - UI Actions
 
 - (void)appIconViewClicked:(APAppIconView *)view app:(APApp *)app {
@@ -177,12 +192,16 @@
 #pragma mark - ScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  // Switch the indicator when more than 50% of the previous/next page is visible
+  // Update pages when more than 50% of the previous/next page is visible
   CGFloat pageWidth = self.scrollView.frame.size.width;
   int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
   [self loadScrollViewForPage:page - 1];
   [self loadScrollViewForPage:page];
   [self loadScrollViewForPage:page + 1];
+  
+  // Update label while scrolling
+//  self.pageLabel.text = [NSString stringWithFormat: \
+        NSLocalizedString(@"Page %d", @"Page %d"), page];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

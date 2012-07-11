@@ -12,17 +12,21 @@
 #import "APDeviceSelectorViewController.h"
 
 @interface APHomeContentViewController : UIViewController
-<UITableViewDelegate, UITableViewDataSource, 
+<UITableViewDataSource, 
 RKObjectLoaderDelegate, APHomeAppSectionCellDelegate,
 APDeviceSelectorViewControllerDelegate>
 
 @property (copy, nonatomic)   NSArray               *appSections;
-@property (strong, nonatomic) UIPopoverController   *popover;
+@property (strong, nonatomic) UIPopoverController   *devicePopover;
 @property (strong, nonatomic) IBOutlet UITableView  *tableView;
 @property (strong, nonatomic) IBOutlet UIButton     *deviceSelectorButton;
 
-// Update the whole view to reflect new child
+// Update the current apps on home screen by first clearing out previous ones
+- (void)clearAndUpdateViewForCurrentChild;
+
+// Update current apps silentsly. Used for pull refresh.
 - (void)updateViewForCurrentChild;
+
 - (IBAction)deviceSelectorClicked:(UIButton *)sender;
 
 @end

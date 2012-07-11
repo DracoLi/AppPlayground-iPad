@@ -13,6 +13,7 @@
 #import "APApp.h"
 #import "APHomeAppSectionCell.h"
 #import "APServerHomeSection.h"
+#import "APSettings.h"
 
 #define kAppSectionNameKey  @"section_name"
 #define kAppSectionAppsKey  @"section_apps"
@@ -20,13 +21,14 @@
 @interface APHomeContentViewController ()
 - (void)currentChildChanged:(NSNotification *)notification;
 - (void)printCurrentSections;
+- (NSDictionary *)parametersForServer;
 @end
 
 @implementation APHomeContentViewController
 @synthesize tableView = _tableView;
 @synthesize appSections = _appSections;
 @synthesize deviceSelectorButton = _deviceSelectorButton;
-@synthesize popover = _popover;
+@synthesize devicePopover = _devicePopover;
 
 #pragma mark - View cycle
 
@@ -36,7 +38,7 @@
 	
   // Register to receive notifications for current child
   [[NSNotificationCenter defaultCenter] addObserver:self 
-                                           selector:@selector(currentChildChanged) 
+                                           selector:@selector(currentChildChanged:) 
                                                name:kCurrentChildNotification
                                              object:nil];
   
@@ -44,8 +46,8 @@
   APDeviceSelectorViewController *deviceSelector = 
     [[UIStoryboard storyboardWithName:@"NavigationStoryboard" bundle:nil] 
      instantiateViewControllerWithIdentifier:@"DeviceSelectorViewIdentifier"];
-  self.popover = [[UIPopoverController alloc] 
-             initWithContentViewController:deviceSelector];
+  self.devicePopover = [[UIPopoverController alloc] 
+                        initWithContentViewController:deviceSelector];
   deviceSelector.delegate = self;
   
   // TODO: customzie refresh view according to UI
@@ -62,12 +64,13 @@
        forCellReuseIdentifier:@"APHomeAppSectionCellIdentifier"];
   
   // Populates our home view
-  [self updateViewForCurrentChild];
+  [self clearAndUpdateViewForCurrentChild];
 }
 
 - (void)viewDidUnload {
-  [self setDeviceSelectorButton:nil];
   [super viewDidUnload];
+  [self setDeviceSelectorButton:nil];
+  [self setTableView:nil];
 }
 
 - (void)dealloc {
@@ -79,35 +82,39 @@
 #pragma mark - Custom
 
 - (void)currentChildChanged:(NSNotification *)notification {
+  [self clearAndUpdateViewForCurrentChild];
+}
+
+- (void)clearAndUpdateViewForCurrentChild {
+  self.appSections = nil;
+  [self.tableView reloadData];
   [self updateViewForCurrentChild];
 }
 
 - (void)updateViewForCurrentChild {
-  
-  // APChild *currentChild = [APChild getCurrentChild];
-  
   // Get new data for this child from server
   // UI updates are handled in the delegate that receives the apps
-//  NSString *resourcesPath = [@"/home" stringByAppendingQueryParameters:
-//                             [currentChild queryDictionary]];
-//  [[RKObjectManager sharedManager] 
-//   loadObjectsAtResourcePath:resourcesPath usingBlock:^(RKObjectLoader *loader) {
-//     loader.targetObject = nil;
-//     loader.delegate = self;
-//  }];
+  NSString *resourcesPath = [@"/home" stringByAppendingQueryParameters:
+                             [self parametersForServer]];
+  [[RKObjectManager sharedManager] 
+   loadObjectsAtResourcePath:resourcesPath usingBlock:^(RKObjectLoader *loader) {
+     NSLog(@"fetch url = %@", loader.URL.description);
+     loader.targetObject = nil;
+     loader.delegate = self;
+  }];
   
-  NSLog(@"update view for current child");
-  self.appSections = [APServerHomeSection sampleSections];
-  
-  // Stop refreshing
-  [self.tableView.pullToRefreshView stopAnimating];
-  
-  [self.tableView reloadData];
+//  NSLog(@"update view for current child");
+//  self.appSections = [APServerHomeSection sampleSections];
+//  
+//  // Stop refreshing
+//  [self.tableView.pullToRefreshView stopAnimating];
+//  
+//  [self.tableView reloadData];
 }
 
 - (IBAction)deviceSelectorClicked:(UIButton *)sender {
-  [self.popover presentPopoverFromRect:sender.frame inView:self.view 
-              permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+  [self.devicePopover presentPopoverFromRect:sender.frame inView:self.view 
+                    permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)printCurrentSections {
@@ -116,6 +123,17 @@
     NSLog(@"section apps: %@", section.apps);
     NSLog(@"-------------");
   }
+}
+
+- (NSDictionary *)parametersForServer {
+  NSMutableDictionary *serverParms = [[[APChild getCurrentChild] queryDictionary] mutableCopy];
+  [serverParms setValue:[[APSettings userCountryCode] lowercaseString] 
+                 forKey:@"country"];
+  APDeviceSelectorViewController *deviceController = (APDeviceSelectorViewController *)
+                                                     [self.devicePopover contentViewController];
+  [serverParms setValue:[[deviceController getSelectedDevice] lowercaseString] 
+                 forKey:@"device"];
+  return serverParms;
 }
 
 #pragma mark - Table view data source
@@ -137,12 +155,6 @@
   return cell;
 }
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-}
-
 #pragma mark - Server Response Delegate
 
 - (void)request:(RKRequest *)request didLoadResponse:(RKResponse *)response {
@@ -153,14 +165,14 @@
   NSDictionary *responseDic = [response parsedBody:&error];
   if (error) {
     NSLog(@"Error loading response: %@", [error localizedDescription]);
-  }
-  if ([responseDic valueForKey:@"success"] == false) {
+  }else if ([responseDic valueForKey:@"success"] == false) {
     NSLog(@"Error retreiving from server: %@", [responseDic valueForKey:@"message"]);
   }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)object {
   self.appSections = object;
+  [self.tableView.pullToRefreshView stopAnimating];
   [self.tableView reloadData];
 }
 
@@ -182,13 +194,20 @@
 #pragma mark - APDeviceSelectorDelegate
 
 - (void)apDeviceSelectorDeviceChanged:(NSString *)device {
-  [self.deviceSelectorButton setTitle:device forState:UIControlStateNormal];
+  BOOL deviceChanged = ![device isEqualToString:self.deviceSelectorButton.titleLabel.text];
+  if (deviceChanged) {
+    // Update device button
+    [self.deviceSelectorButton setTitle:device forState:UIControlStateNormal];
+    
+    // Clear the table before updating
+    [self clearAndUpdateViewForCurrentChild];
+  }
+  [self.devicePopover dismissPopoverAnimated:YES];
 }
 
 #pragma mark - Others
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
 }
 

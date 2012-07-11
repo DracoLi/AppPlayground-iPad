@@ -11,46 +11,57 @@
 #import "APFavorites.h"
 
 @implementation APApp
+@synthesize appID = _appID;
 @synthesize name = _name;
 @synthesize category = _category;
 @synthesize iconURLString = _iconURLString;
 @synthesize price = _price;
 @synthesize generalRatings = _generalRatings;
+@synthesize country = _country;
 
 // App property keys
+#define kAppIDKey                @"AppIDKey"
 #define kAppNameKey              @"AppNameKey"
 #define kAppCategoryKey          @"AppCategoryKey"
 #define kAppIconURLKey           @"AppIconURLKey"
 #define kAppPriceKey             @"AppPriceKey"
 #define kAppGeneralRatingKey     @"AppGeneralRatingKey"
+#define kAppCountryKey           @"AppCountryKey"
 
 - (id)initWithCoder:(NSCoder *)decoder {
   self = [super init];
   if(self) {
+    _appID            = [decoder decodeObjectForKey:kAppIDKey];
     _name             = [decoder decodeObjectForKey:kAppNameKey];
     _category         = [decoder decodeObjectForKey:kAppCategoryKey];
     _iconURLString    = [decoder decodeObjectForKey:kAppIconURLKey];
+    _price            = [decoder decodeObjectForKey:kAppPriceKey];
     _generalRatings   = [decoder decodeObjectForKey:kAppGeneralRatingKey];
+    _country          = [decoder decodeObjectForKey:kAppCountryKey];
   }
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
+  [encoder encodeObject:self.appID forKey:kAppIDKey];
   [encoder encodeObject:self.name forKey:kAppNameKey];
   [encoder encodeObject:self.category forKey:kAppCategoryKey];
   [encoder encodeObject:self.iconURLString forKey:kAppIconURLKey];
+  [encoder encodeObject:self.price forKey:kAppPriceKey];
   [encoder encodeObject:self.generalRatings forKey:kAppGeneralRatingKey];
+  [encoder encodeObject:self.country forKey:kAppCountryKey];
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Name: %@\rCategory: %@\rPrice: %.2f\rRatings:", 
-          self.name, self.category, [self.price floatValue], [self.generalRatings floatValue]];
+  return [NSString stringWithFormat:@"Name: %@\rCountry: %@\rCategory: %@\rPrice: %.2f\rRatings:", 
+          self.name, self.country, self.category, [self.price floatValue], 
+          [self.generalRatings floatValue]];
 }
 
 - (BOOL)isEqual:(id)object {
   if ([object isKindOfClass:[APApp class]]) {
     APApp *target = (APApp *)object;
-    if ([self.name isEqualToString:target.name]) {
+    if ([self.appID isEqualToNumber:target.appID]) {
       return true;
     }
   }
@@ -61,6 +72,16 @@
 
 - (BOOL)isFavorited {
   return [APFavorites isAppFavorited:self];
+}
+
+#pragma mark - Debug methods
+#ifdef DEBUG
++ (NSArray *)sampleApps {
+  // Get our array of sample dictionary apps
+  NSString *path = [[NSBundle mainBundle] pathForResource:@"sample-apps" 
+                                                   ofType:@"plist"];
+  NSArray *appsData = [[NSArray alloc] initWithContentsOfFile:path];
+  return [APApp parseAppsDictionary:appsData];
 }
 
 + (NSArray *)parseAppsDictionary:(NSArray *)appsData {
@@ -76,16 +97,6 @@
     [apps addObject:app];
   }
   return apps;
-}
-
-#pragma mark - Debug methods
-#ifdef DEBUG
-+ (NSArray *)sampleApps {
-  // Get our array of sample dictionary apps
-  NSString *path = [[NSBundle mainBundle] pathForResource:@"sample-apps" 
-                                                   ofType:@"plist"];
-  NSArray *appsData = [[NSArray alloc] initWithContentsOfFile:path];
-  return [APApp parseAppsDictionary:appsData];
 }
 #endif
 

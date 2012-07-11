@@ -52,11 +52,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
   
   // Setup our object mappings
   RKObjectMapping *appMapping = [RKObjectMapping mappingForClass:[APApp class]];
+  [appMapping mapKeyPath:@"a_id" toAttribute:@"appID"];
   [appMapping mapKeyPath:@"name" toAttribute:@"name"];
   [appMapping mapKeyPath:@"category" toAttribute:@"category"];
   [appMapping mapKeyPath:@"pic_icon60" toAttribute:@"iconURLString"];
   [appMapping mapKeyPath:@"amount" toAttribute:@"price"];
   [appMapping mapKeyPath:@"total_average_rating" toAttribute:@"generalRatings"];
+  [appMapping mapKeyPath:@"country" toAttribute:@"country"];
   [objectManager.mappingProvider setObjectMapping:appMapping forKeyPath:@"apps"];
   
   RKObjectMapping *sectionData = [RKObjectMapping mappingForClass:[APServerHomeSection class]];

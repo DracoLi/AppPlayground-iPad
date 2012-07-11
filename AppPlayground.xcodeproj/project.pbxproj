@@ -16,6 +16,7 @@
 		D4078EE41598ECA0000C0E4E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4078EE21598ECA0000C0E4E /* MainStoryboard.storyboard */; };
 		D4078EED1598ECA2000C0E4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EC71598EC9E000C0E4E /* UIKit.framework */; };
 		D4078EEE1598ECA2000C0E4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4078EC91598EC9E000C0E4E /* Foundation.framework */; };
+		D414FEFC15AC92D20064A7AF /* APSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D414FEFB15AC92D20064A7AF /* APSettings.m */; };
 		D440EF8815A0F84B00004C38 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EF8715A0F84B00004C38 /* AudioToolbox.framework */; };
 		D440EF8A15A0F85300004C38 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EF8915A0F85300004C38 /* CFNetwork.framework */; };
 		D440EF8C15A0F86700004C38 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D440EF8B15A0F86700004C38 /* SystemConfiguration.framework */; };
@@ -159,6 +160,8 @@
 		D4078ED71598EC9F000C0E4E /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
 		D4078EE31598ECA0000C0E4E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D4078EEA1598ECA2000C0E4E /* AppPlaygroundTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppPlaygroundTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D414FEFA15AC92D10064A7AF /* APSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSettings.h; sourceTree = "<group>"; };
+		D414FEFB15AC92D20064A7AF /* APSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APSettings.m; sourceTree = "<group>"; };
 		D440EF8715A0F84B00004C38 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D440EF8915A0F85300004C38 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		D440EF8B15A0F86700004C38 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -435,6 +438,8 @@
 				D4811BA415A3C04D00A82E56 /* APFavorites.m */,
 				D456A97A15AA4C1F009156CE /* APServerAppResults.h */,
 				D456A97B15AA4C1F009156CE /* APServerAppResults.m */,
+				D414FEFA15AC92D10064A7AF /* APSettings.h */,
+				D414FEFB15AC92D20064A7AF /* APSettings.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				D456A98915AA4D23009156CE /* APServerHomeSection.m in Sources */,
 				D456A99015AA7E92009156CE /* NSNumber+Currency.m in Sources */,
 				D456A99315AA84A7009156CE /* UIView+CustomView.m in Sources */,
+				D414FEFC15AC92D20064A7AF /* APSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
