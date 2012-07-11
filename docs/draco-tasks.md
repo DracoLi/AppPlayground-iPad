@@ -31,7 +31,13 @@ Draco's Todos
 - Categories
   - Currency handler
   - Easy icon
-  
-## General
+    
+# Week 2
 - Server side stuff
   - Script that gets all homepage content for user
+  
+- Data persistence restructuring for 
+  - Child
+  - Favorites
+
+- Home view + server integration

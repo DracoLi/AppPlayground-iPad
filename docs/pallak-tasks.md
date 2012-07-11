@@ -11,3 +11,6 @@ Pallak's Todos
   1. Populate project with some sample app data
     - located in Assets/Data/sample-apps.plist
     
+
+## Week 2
+- Change all references of AppPlayground to Kids App Academy for the project
